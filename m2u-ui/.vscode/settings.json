@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    // This allows the TailwindCSS extension to work in CVA components.
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "cSpell.words": ["Appt"]
+}

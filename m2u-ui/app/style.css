@@ -1,0 +1,27 @@
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+body {
+  font-family: 'Inter', sans-serif !important;
+}
+.font-secondary {
+  font-family: var(--font-family-secondary, 'Inter', sans-serif);
+}
+
+.splt-txt.aos-animate .char {
+  webkit-animation: fadeInLeft 0.8s cubic-bezier(0.3, 0, 0.7, 1) both;
+  animation: fadeInLeft 0.8s cubic-bezier(0.3, 0, 0.7, 1) both;
+  -webkit-animation-delay: calc(30ms * var(--char-index));
+  animation-delay: calc(30ms * var(--char-index));
+}

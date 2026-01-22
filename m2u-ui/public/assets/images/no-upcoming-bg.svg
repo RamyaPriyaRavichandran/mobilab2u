@@ -1,0 +1,9 @@
+<svg width="969" height="249" viewBox="0 0 969 249" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_480_269" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="969" height="249">
+<rect x="0.716797" y="0.486572" width="967.867" height="247.35" rx="21.8626" fill="#FFF4EC" stroke="#ECECEC" style="fill:#FFF4EC;fill:color(display-p3 1.0000 0.9569 0.9255);fill-opacity:1;stroke:#ECECEC;stroke:color(display-p3 0.9268 0.9268 0.9268);stroke-opacity:1;" stroke-width="0.40731"/>
+</mask>
+<g mask="url(#mask0_480_269)">
+<path d="M894.859 421.419C881.972 437.517 861.355 437.299 848.81 420.934L668.377 185.544C653.974 166.754 656.803 135.727 674.22 121.454L896.523 -60.7134C909.065 -70.991 925.424 -69.1557 936.276 -56.2535L1086.09 121.866C1099.65 137.983 1099.86 165.356 1086.55 181.982L894.859 421.419Z" fill="#FFDADA" style="fill:#FFDADA;fill:color(display-p3 1.0000 0.8558 0.8558);fill-opacity:1;"/>
+<rect width="256.632" height="235.723" rx="108.945" transform="matrix(0.569449 0.822027 -0.569449 0.822027 41.2559 -121.681)" fill="#FFDADA" fill-opacity="0.24" style="fill:#FFDADA;fill:color(display-p3 1.0000 0.8558 0.8558);fill-opacity:0.24;"/>
+</g>
+</svg>

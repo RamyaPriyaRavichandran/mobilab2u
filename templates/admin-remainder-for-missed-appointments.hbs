@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Confirmation Reminder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .header {
+      background-color: #007BFF;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      padding: 20px;
+      color: #333333;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #d9534f;
+    }
+    .footer {
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #999999;
+      background-color: #f0f0f0;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      color: #ffffff;
+      background-color: #28a745;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    @media only screen and (max-width: 600px) {
+      .content, .header, .footer {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Doctor Confirmation Reminder</h2>
+    </div>
+    <div class="content">
+      <p>Dear Admin,</p>
+      <p>The following appointment is scheduled to start in <span class="highlight">{{sTime}} - {{eTime}}</span> and is <strong>Approved</strong>, but the doctor has not yet confirmed it:</p>
+      
+      <ul>
+        <li><strong>Doctor:</strong>{{doctor}}</li>
+        <li><strong>Patient:</strong>{{customer}}</li>
+        <li><strong>Appointment Time:</strong>{{date}} {{time}}</li>
+        <li><strong>Status:</strong> Approved (Doctor <span class="highlight">Not Confirmed</span>)</li>
+      </ul>
+
+      <p>Please follow up with the doctor to ensure they are prepared for the appointment.</p>
+
+      <a href="{{appURL}}" class="button">View Appointment Details</a>
+    </div>
+    <div class="footer">
+      <p>From,</p>
+      <p>Administration Team,</p>
+      <p>Mobilab2u.com</p>
+    </div>
+  </div>
+</body>
+</html>

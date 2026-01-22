@@ -1,0 +1,24 @@
+name: Discord Notify
+
+on:
+  workflow_call:
+    inputs:
+      content:
+        description: 'Notification Content'
+        required: true
+        type: string
+      discord-webhook-url:
+        description: 'Discord Webhook URL'
+        required: true
+        type: string
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v5.3.0
+      with:
+        webhook-url: ${{ inputs.discord-webhook-url }}
+        embed-description: |
+          ${{inputs.content}}

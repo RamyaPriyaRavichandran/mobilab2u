@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    env_file:
+      - ./m2u-ui/.env
+    build:
+      context: ./m2u-ui
+      dockerfile: Dockerfile
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nextjs-app.rule=Host(`${DOMAIN_NAME}`) && !PathRegexp(`/api/v1`) && !PathRegexp(`/api/documentation`)'
+      - 'traefik.http.services.nextjs-app.loadbalancer.server.port=4000'
+      - 'traefik.http.routers.nextjs-app.entrypoints=websecure'
+      - 'traefik.http.routers.nextjs-app.tls.certresolver=myresolver'
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge

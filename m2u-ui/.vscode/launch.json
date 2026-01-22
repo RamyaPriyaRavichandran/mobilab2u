@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "M2U: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm run dev"
+    },
+    {
+      "name": "M2U: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://localhost:4000"
+    },
+    {
+      "name": "M2U: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm run dev",
+      "serverReadyAction": {
+        "pattern": "- Local:.+(https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}

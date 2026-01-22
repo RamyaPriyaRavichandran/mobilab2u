@@ -1,0 +1,7 @@
+build
+node_modules
+*.html
+.git
+.env
+.env.*
+pnpm-lock.yaml

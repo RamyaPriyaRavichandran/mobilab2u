@@ -1,0 +1,80 @@
+name: M2U Prod Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  m2u-backend-build:
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./m2u-server
+
+    runs-on: ['self-hosted', 'prod']
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          touch .env
+          echo "${{ secrets.MOBILAB2U_PROD_SERVER }}" > .env
+          cd ..
+          echo "${{ secrets.MOBILAB2U_PROD_DOMAIN }}" > .env
+          docker-compose -f ./docker-compose-server-prod.yml up --build -d
+
+  m2u-frontend-build:
+    needs: m2u-backend-build
+    runs-on: ['self-hosted', 'prod']
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./m2u-ui
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - run: |
+          touch .env
+          echo "${{ secrets.MOBILAB2U_PROD_UI }}" > .env
+          cd ..
+          docker-compose -f ./docker-compose-ui-prod.yml up --build -d
+
+  notify-backend:
+    if: ${{ always() }}
+    needs: m2u-backend-build
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_BUILD_M2U_WEBHOOK_URL}}
+      content: |
+        🚀 **M2U/Prod Backend Deployment ${{ needs.m2u-backend-build.result == 'success' && '- Success ✅' || '- Failed ❌' }} [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})**
+
+        👤 Actor: **${{ github.actor }}**
+
+        🏕️ Branch: **${{ github.ref_name }}**
+
+        📓 Repository: [${{ github.repository }}](https://github.com/${{ github.repository }})
+
+        🎯 [Last Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) | 🔗 [App Link](http://mobilab2u.com/)
+    secrets: inherit
+
+  notify-frontend:
+    if: ${{ always() }}
+    needs: m2u-frontend-build
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_BUILD_M2U_WEBHOOK_URL}}
+      content: |
+        🚀 **M2U/Prod Frontend Deployment ${{ needs.m2u-frontend-build.result == 'success' && '- Success ✅' || '- Failed ❌' }} [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})**
+
+        👤 Actor: **${{ github.actor }}**
+
+        🏕️ Branch: **${{ github.ref_name }}**
+
+        📓 Repository: [${{ github.repository }}](https://github.com/${{ github.repository }})
+
+        🎯 [Last Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) | 🔗 [App Link](http://mobilab2u.com/)
+    secrets: inherit

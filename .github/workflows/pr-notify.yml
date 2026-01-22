@@ -1,0 +1,77 @@
+on:
+  pull_request:
+    types: [opened, synchronize, closed, reopened]
+  pull_request_review:
+    types: [submitted]
+jobs:
+  pr_create_notify:
+    if: github.event.action == 'opened'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_CR_WEBHOOK_URL}}
+      content: |
+        🎉 **M2U PR Created**
+
+        **${{github.actor}} created a pull request [#${{github.event.number}}](${{ github.event.pull_request.html_url }})**
+        ```${{ github.head_ref }} -> ${{ github.base_ref }}```
+        ### [**${{ github.event.pull_request.title }}**](${{ github.event.pull_request.html_url }})
+        ${{ github.event.pull_request.body }}
+  pr_reopen_notify:
+    if: github.event.action == 'reopened'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_CR_WEBHOOK_URL}}
+      content: |
+        🎉 **M2U PR Reopened**
+
+        **${{github.actor}} reopened a pull request [#${{github.event.number}}](${{ github.event.pull_request.html_url }})**
+        ```${{ github.head_ref }} -> ${{ github.base_ref }}```
+        ### [**${{ github.event.pull_request.title }}**](${{ github.event.pull_request.html_url }})
+        ${{ github.event.pull_request.body }}
+
+  pr_sync_notify:
+    if: github.event.action == 'synchronize'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_CR_WEBHOOK_URL}}
+      content: |
+        🎊 **M2U PR Updated**
+
+        **${{github.actor}} updated the pull request [#${{github.event.number}}](${{ github.event.pull_request.html_url }})**
+        ```${{ github.head_ref }} -> ${{ github.base_ref }}```
+        ### [**${{ github.event.pull_request.title }}**](${{ github.event.pull_request.html_url }})
+        ${{ github.event.pull_request.body }}
+
+  pr_close_notify:
+    if: github.event.action == 'closed'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_CR_WEBHOOK_URL}}
+      content: |
+        🎊 **M2U PR Closed**
+
+        **${{github.actor}} closed the pull request [#${{github.event.number}}](${{ github.event.pull_request.html_url }})**
+        ```${{ github.head_ref }} -> ${{ github.base_ref }}```
+        ### [**${{ github.event.pull_request.title }}**](${{ github.event.pull_request.html_url }})
+        ${{ github.event.pull_request.body }}
+
+        **🟢 Merged:** ${{ github.event.pull_request.merged && '✅' || '❌' }}
+
+  pr_notify_review:
+    if: ${{ github.event_name == 'pull_request_review' && github.event.review.state == 'changes_requested' || github.event.review.state == 'approved' }}
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_CR_WEBHOOK_URL}}
+      content: |
+        🎊 **M2U PR Reviewed**  
+
+        **${{github.event.review.user.login}} reviewed the pull request [#${{github.event.pull_request.number}}](${{ github.event.pull_request.html_url }})**
+
+        ### [**${{ github.event.pull_request.title }}**](${{ github.event.pull_request.html_url }})
+
+        👤 Review submitted to: **${{ github.event.pull_request.user.login }}**
+
+        📍 State: **${{ github.event.review.state == 'changes_requested' && 'Changes Requested' || 'Approved' }}**
+
+        🖋️ **Comments:** 
+               ${{ github.event.review.body && github.event.review.body || '📝 Some code comments added by reviewer.' }}

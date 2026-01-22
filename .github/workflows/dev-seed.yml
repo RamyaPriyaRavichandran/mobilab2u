@@ -1,0 +1,36 @@
+# This is a basic workflow that is manually triggered
+
+name: DB Seed Dev - Real Data
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+jobs:
+  ssh-and-seed-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH & Seed
+        env:
+          HOST: ${{ vars.AWS_DEV_IP }}
+          USER: ${{ vars.AWS_DEV_USER }}
+        run: |
+          echo "${{ secrets.AWS_DEV_PEM_KEY }}" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key $USER@$HOST 'docker exec mobilab2u-fastify-app-1 sh -c "npm run seed"'
+
+  discord-notify-be:
+    if: ${{ always() }}
+    needs: ssh-and-seed-db
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_BUILD_M2U_WEBHOOK_URL}}
+      content: |
+        🚀 **M2U/DB Seed - Real Data ${{ needs.ssh-and-seed-db.result == 'success' && '- Success ✅' || '- Failed ❌' }} [#${{ github.run_number }}*](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})**
+
+        📓 Repository: *${{ github.repository }}*
+
+        🫵🏻 Actor: *${{ github.actor }}*
+
+        🏕️ Branch: *${{ github.ref_name }}*
+    secrets: inherit

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    env_file:
+      - ./m2u-ui/.env
+    build:
+      context: ./m2u-ui
+      dockerfile: Dockerfile
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.middlewares.redirect-to-www.redirectregex.regex=^https?://${DOMAIN_NAME}(.*)'
+      - 'traefik.http.middlewares.redirect-to-www.redirectregex.replacement=https://www.${DOMAIN_NAME}$${1}'
+      - 'traefik.http.routers.nextjs-app.rule=(Host(`${DOMAIN_NAME}`) || Host(`www.${DOMAIN_NAME}`)) && !PathRegexp(`/api/v1`)'
+      - 'traefik.http.middlewares.redirect-to-www.redirectregex.permanent=true'
+      - 'traefik.http.services.nextjs-app.loadbalancer.server.port=4000'
+      - 'traefik.http.routers.nextjs-app.entrypoints=websecure'
+      - 'traefik.http.routers.nextjs-app.middlewares=redirect-to-www'
+      - 'traefik.http.routers.nextjs-app.tls.certresolver=myresolver'
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge

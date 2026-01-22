@@ -1,0 +1,121 @@
+version: "3.8"
+
+services:
+  reverse-proxy:
+    image: traefik:v3.1@sha256:f4efd119261d623362d4420a35510ebbee6dd75140c8599aae0aa58251139474
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.email=devsantheep@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80" # The HTTP port
+      - "443:443"
+      - "8081:8080" # The Web UI (enabled by --api.insecure=true)
+      - "8082:8082" # Mongo Express
+    volumes:
+      - "~/letsencrypt:/letsencrypt"
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+    networks:
+      - node-network
+
+  fastify-app:
+    env_file:
+      - ./m2u-server/.env
+    build:
+      context: ./m2u-server
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastify-app.rule=Host(`${DOMAIN_NAME}`) && PathRegexp(`/api`)"
+      - "traefik.http.services.fastify-app.loadbalancer.server.port=9000"
+      - "traefik.http.routers.fastify-app.entrypoints=websecure"
+      - "traefik.http.routers.fastify-app.tls.certresolver=myresolver"
+    command: npm run start:prod
+    networks:
+      - node-network
+    depends_on:
+      - mongodb
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mongo-express.rule=Host(`mongo.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.mongo-express.entrypoints=websecure"
+      - "traefik.http.routers.mongo-express.tls.certresolver=myresolver"
+      - "traefik.http.services.mongo-express.loadbalancer.server.port=8082"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: mobilab2u
+      ME_CONFIG_BASICAUTH_PASSWORD: mobilab2u
+      PORT: 8082
+    networks:
+      - node-network
+    depends_on:
+      - mongodb
+
+  queueing-app:
+    env_file:
+      - ./m2u-server/apps/queueing-app/.env
+    build:
+      context: ./m2u-server/apps/queueing-app
+      dockerfile: Dockerfile
+    command: npm run dev
+    networks:
+      - node-network
+    depends_on:
+      - redisdb
+
+  remainder-notifications-app:
+    env_file:
+      - ./m2u-server/apps/remainder-notifications-app/.env
+    build:
+      context: ./m2u-server/apps/remainder-notifications-app
+      dockerfile: Dockerfile
+    command: npm run dev
+    networks:
+      - node-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6-jammy
+    container_name: mongodb
+    volumes:
+      - mongodbdata:/data/db
+      - /db-backups:/db-backups
+    networks:
+      - node-network
+    depends_on:
+      - reverse-proxy
+
+  redisdb:
+    image: redis:alpine
+    container_name: redisdb
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    networks:
+      - node-network
+    volumes:
+      - redisdata:/data
+
+volumes:
+  mongodbdata:
+  redisdata:
+
+networks:
+  node-network:
+    driver: bridge

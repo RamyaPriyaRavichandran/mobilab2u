@@ -1,0 +1,27 @@
+name: 🚀 Release Request
+description: Release features and bugfixes.
+title: "[Release]: Version"
+labels: ["Release"]
+projects: ["Santheepkumar/6"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to create a release request
+  - type: textarea
+    id: describe-release
+    attributes:
+      label: Describe the release
+      description: Describe, what feature/bugs included in this release?
+      placeholder: Describe about the release
+      value: "This is an great release with lots of features and bug fixes!"
+    validations:
+      required: true
+  - type: textarea
+    id: release-issues
+    attributes:
+      label: List the issues(Feature/Bug) included in this release
+      placeholder: List the issue links in bullet points
+      value: "- https://github.com/Santheepkumar/mobilab2u/issues/{id}"
+    validations:
+      required: true

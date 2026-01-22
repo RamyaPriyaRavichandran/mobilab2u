@@ -1,0 +1,42 @@
+name: Notify
+
+on:
+  workflow_call:
+    inputs:
+      job-name:
+        description: 'Job Name'
+        required: true
+        type: string
+      app-url:
+        description: 'App URL'
+        required: true
+        type: string
+      status:
+        description: 'Build Status'
+        required: true
+        type: string
+    secrets:
+      TELEGRAM_TO:
+        required: true
+      TELEGRAM_TOKEN:
+        required: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/telegram-action@master
+        with:
+          to: ${{ vars.TELEGRAM_BUILD_BOT_ID }}
+          token: ${{ vars.TELEGRAM_BUILD_BOT_TOKEN }}
+          format: markdown
+          message: |
+            🚀 *M2U/${{ inputs.job-name }} ${{ github.run_number }}* 
+            ${{ inputs.status == 'success' && '- Success ✅' || '- Failed ❌' }}
+            📓 Repository: *${{ github.repository }}*
+            👤 Owner: *${{ github.repository_owner }}*
+            🫵🏻 Actor: *${{ github.actor }}*
+            🏕️ Branch: *${{ github.ref_name }}*
+            📟 Action: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            🎯 Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+            🔗 App URL: *${{ inputs.app-url }}*

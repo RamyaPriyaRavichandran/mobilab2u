@@ -1,0 +1,91 @@
+name: M2U Dev Build
+
+on:
+  push:
+    branches: ['develop']
+
+jobs:
+  m2u-backend-build:
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./m2u-server
+
+    runs-on: ['self-hosted', 'dev']
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          touch .env
+          echo "${{ secrets.MOBILAB2U_DEV_SERVER }}" > .env
+          cd apps/queueing-app
+          echo "${{ secrets.MOBILAB_DEV_EMAIL_QUEUE }}" > .env
+          cd ../remainder-notifications-app
+          echo "${{ secrets.MOBILAB_DEV_REMAINDER_NOTIFICATIONS }}" > .env
+          cd ../../../
+          echo "${{ secrets.MOBILAB2U_DEV_DOMAIN }}" > .env
+          # ./db-backup.sh ${{ github.run_number }}
+          docker-compose -f ./docker-compose-server.yml up --build -d
+      - name: Save backup db
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.run_number }}-db-backup # save backup db as artifact
+          path: /db-backups/${{ github.run_number }}.dump
+
+  m2u-frontend-build:
+    needs: m2u-backend-build
+    runs-on: ['self-hosted', 'dev']
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./m2u-ui
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - run: |
+          touch .env
+          echo "${{ secrets.MOBILAB2U_DEV_UI }}" > .env
+          cd ..
+          docker-compose -f ./docker-compose-ui.yml up --build -d
+
+  notify-backend:
+    if: ${{ always() }}
+    needs: m2u-backend-build
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_BUILD_M2U_WEBHOOK_URL}}
+      content: |
+        🚀 **M2U/Dev Backend Deployment ${{ needs.m2u-backend-build.result == 'success' && '- Success ✅' || '- Failed ❌' }} [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})**
+
+        👤 Actor: **${{ github.actor }}**
+
+        🏕️ Branch: **${{ github.ref_name }}**
+
+        📓 Repository: [${{ github.repository }}](https://github.com/${{ github.repository }})
+
+        🎯 [Last Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) | 🔗 [App Link](http://dev.mobilab2u.com/)
+    secrets: inherit
+
+  notify-frontend:
+    if: ${{ always() }}
+    needs: m2u-frontend-build
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_BUILD_M2U_WEBHOOK_URL}}
+      content: |
+        🚀 **M2U/Dev Frontend Deployment ${{ needs.m2u-frontend-build.result == 'success' && '- Success ✅' || '- Failed ❌' }} [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})**
+
+        👤 Actor: **${{ github.actor }}**
+
+        🏕️ Branch: **${{ github.ref_name }}**
+
+        📓 Repository: [${{ github.repository }}](https://github.com/${{ github.repository }})
+
+        🎯 [Last Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }}) | 🔗 [App Link](http://dev.mobilab2u.com/)
+    secrets: inherit

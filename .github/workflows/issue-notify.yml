@@ -1,0 +1,117 @@
+on:
+  issues:
+    types: [opened, closed, reopened, edited]
+
+env:
+  DISCORD_WEBHOOK: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+
+jobs:
+  issue_create_notify:
+    if: github.event.action == 'opened'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+      content: |
+        🎉 **M2U ISSUE CREATED**
+
+        **${{ github.actor }} created the issue [#${{github.event.issue.number}}](${{ github.event.issue.html_url }})**
+
+        ### [${{ github.event.issue.title }}](${{ github.event.issue.html_url }})
+
+        👥 Assignees: 
+              ${{ join(github.event.issue.assignees.*.login, ', ') }}
+
+        🏷️ Labels: 
+              ${{ join(github.event.issue.labels.*.name, ', ') }}
+
+        📊 State: **${{ github.event.issue.state }}**
+
+        👤 Created by: **${{ github.actor }}**
+
+  issue_close_notify:
+    if: github.event.action == 'closed'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+      content: |
+        🎊 **M2U ISSUE CLOSED**
+
+        **${{ github.actor }} closed the issue [#${{github.event.issue.number}}](${{ github.event.issue.html_url }})**
+
+        ### [${{ github.event.issue.title }}](${{ github.event.issue.html_url }})
+
+        👥 Assignees: 
+              ${{ join(github.event.issue.assignees.*.login, ', ') }}
+
+        🏷️ Labels: 
+              ${{ join(github.event.issue.labels.*.name, ', ') }}
+
+        📊 State: **${{ github.event.issue.state }}**
+
+        👤 Closed by: **${{ github.actor }}**
+
+  issue_reopen_notify:
+    if: github.event.action == 'reopened'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+      content: |
+        🔄 **M2U ISSUE REOPENED**
+
+        **${{ github.actor }} reopened the issue [#${{github.event.issue.number}}](${{ github.event.issue.html_url }})**
+
+        ### [${{ github.event.issue.title }}](${{ github.event.issue.html_url }})
+
+        👥 Assignees: 
+              ${{ join(github.event.issue.assignees.*.login, ', ') }}
+
+        🏷️ Labels: 
+              ${{ join(github.event.issue.labels.*.name, ', ') }}
+
+        📊 State: **${{ github.event.issue.state }}**
+
+        👤 Reopened by: **${{ github.actor }}**
+
+  issue_edit_notify:
+    if: github.event.action == 'edited'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+      content: |
+        🖋️ **M2U ISSUE UPDATED**
+
+        **${{ github.actor }} updated the issue [#${{github.event.issue.number}}](${{ github.event.issue.html_url }})**
+
+        ### [${{ github.event.issue.title }}](${{ github.event.issue.html_url }})
+
+        👥 Assignees: 
+              ${{ join(github.event.issue.assignees.*.login, ', ') }}
+
+        🏷️ Labels: 
+              ${{ join(github.event.issue.labels.*.name, ', ') }}
+
+        📊 State: **${{ github.event.issue.state }}**
+
+        👤 Updated by: **${{ github.actor }}**
+
+  # issue_assign_notify:
+  #   if: github.event.action == 'assigned'
+  #   uses: ./.github/workflows/discord-notify.yml
+  #   with:
+  #     discord-webhook-url: ${{vars.DISCORD_ISSUE_WEBHOOK_URL}}
+  #     content: |
+  #       🖋️ **Issue Assigned**
+
+  #       ${{toJSON(github.event)}}
+
+  #       **${{github.event.issue.user.login}} updated the issue [#${{github.event.issue.number}}](${{ github.event.issue.html_url }})**
+
+  #       ### [${{ github.event.issue.title }}](${{ github.event.issue.html_url }})
+
+  #       👥 Assignees: ${{ join(github.event.issue.assignees.*.login, ', ') }}
+
+  #       🏷️ Labels: ${{ join(github.event.issue.labels.*.name, ', ') }}
+
+  #       📊 State: **${{ github.event.issue.state }}**
+
+  #       👤 Assigned by: **${{ github.actor }}**

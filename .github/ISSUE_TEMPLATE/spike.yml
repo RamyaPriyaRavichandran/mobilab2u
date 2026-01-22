@@ -1,0 +1,15 @@
+name: 🔍 Spike Request
+description: Investigate and analyze a particular topic or issue.
+title: "[Spike]: "
+labels: ["Spike"]
+projects: ["Santheepkumar/6"]
+body:
+  - type: textarea
+    id: describe-spike
+    attributes:
+      label: Describe the spike
+      description: Describe the purpose and scope of this spike.
+      placeholder: Provide a detailed description of what needs to be investigated or analyzed.
+      value: "This spike aims to investigate and analyze..."
+    validations:
+      required: true

@@ -1,0 +1,89 @@
+on:
+  milestone:
+    types: [opened, created, edited, closed, deleted]
+
+jobs:
+  milestone_open_notify:
+    if: github.event.action == 'opened'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_RELEASE_WEBHOOK_URL}}
+      content: |
+        🎉 **M2U MILESTONE OPENED**
+
+        **${{github.actor}} opened the milestone [#${{github.event.milestone.number}}](${{ github.event.milestone.html_url }})**
+
+        **🔗 [${{ github.event.milestone.title }}](${{ github.event.milestone.html_url }})**
+
+        **⏳ Due on:** ${{ github.event.milestone.due_on }}
+
+        **📝 Description:**
+        ${{ github.event.milestone.description }}
+
+  milestone_create_notify:
+    if: github.event.action == 'created'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_RELEASE_WEBHOOK_URL}}
+      content: |
+        🎉 **M2U NEW MILESTONE**
+
+        **${{github.actor}} created the milestone [#${{github.event.milestone.number}}](${{ github.event.milestone.html_url }})**
+
+         **🔗 [${{ github.event.milestone.title }}](${{ github.event.milestone.html_url }})**
+
+        **⏳ Due on:** ${{ github.event.milestone.due_on }}
+
+        **📝 Description:**
+        ${{ github.event.milestone.description }}
+
+  milestone_edit_notify:
+    if: github.event.action == 'edited'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_RELEASE_WEBHOOK_URL}}
+      content: |
+        🖋️ **M2U MILESTONE UPDATED**
+
+        **${{github.actor}} created the milestone [#${{github.event.milestone.number}}](${{ github.event.milestone.html_url }})**
+
+         **🔗 [${{ github.event.milestone.title }}](${{ github.event.milestone.html_url }})**
+
+        **⏳ Due on:** ${{ github.event.milestone.due_on }}
+
+        **📝 Description:**
+        ${{ github.event.milestone.description }}
+
+  milestone_close_notify:
+    if: github.event.action == 'closed'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_RELEASE_WEBHOOK_URL}}
+      content: |
+        🎊 **M2U MILESTONE CLOSED**
+
+        **${{github.actor}} closed the milestone [#${{github.event.milestone.number}}](${{ github.event.milestone.html_url }})**
+
+        **🔗 [${{ github.event.milestone.title }}](${{ github.event.milestone.html_url }})**
+
+        **⏳ Due on:** ${{ github.event.milestone.due_on }}
+
+        **📝 Description:**
+        ${{ github.event.milestone.description }}
+
+  milestone_delete_notify:
+    if: github.event.action == 'deleted'
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      discord-webhook-url: ${{vars.DISCORD_RELEASE_WEBHOOK_URL}}
+      content: |
+        ⛔️ **M2U MILESTONE DELETED**
+
+        **${{github.actor}} deleted the milestone [#${{github.event.milestone.number}}](${{ github.event.milestone.html_url }})**
+
+        **🔗 [${{ github.event.milestone.title }}](${{ github.event.milestone.html_url }})**
+
+        **⏳ Due on:** ${{ github.event.milestone.due_on }}
+
+        **📝 Description:**
+        ${{ github.event.milestone.description }}

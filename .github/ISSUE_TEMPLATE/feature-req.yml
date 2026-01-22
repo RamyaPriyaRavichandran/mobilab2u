@@ -1,0 +1,27 @@
+name: 🆕 Feature Request
+description: Request a feature.
+title: "[Feature]: "
+labels: ["Feature"]
+projects: ["Santheepkumar/6"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to create a feature request
+  - type: textarea
+    id: describe-feature
+    attributes:
+      label: Describe the feature
+      description: Describe, what is the feature?
+      placeholder: Describe about the feature
+      value: "Some amazing feature!"
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Any Attachments?
+      description: Add some Images or Videos?
+      placeholder: Drag and Drop or Attach files
+    validations:
+      required: false
