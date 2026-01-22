@@ -1,0 +1,28 @@
+{
+  "title": "Followup Lab Test Schema",
+  "type": "object",
+  "properties": {
+    "appointmentId": {
+      "type": "string"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "customerAppointmentDate": {
+      "type": "string"
+    },
+    "customerAppointmentTime": {
+      "type": "string"
+    },
+    "customerAddress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "appointmentId",
+    "customerAppointmentDate",
+    "customerAppointmentTime",
+    "planId",
+    "customerAddress"
+  ]
+}

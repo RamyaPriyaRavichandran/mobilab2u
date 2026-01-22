@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Appointment Time Slot Available</title>
+    <style>
+      body { font-family: Arial, sans-serif; background-color: #f4f7f9; padding:
+      20px; color: #333; } .container { max-width: 600px; margin: auto;
+      background-color: #ffffff; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); } .header { background-color:
+      #007bff; color: white; padding: 20px; text-align: center; } .content {
+      padding: 20px; line-height: 1.6; } .details { background-color: #eef2f5;
+      padding: 15px; border-radius: 6px; margin-top: 15px; } .footer {
+      font-size: 12px; color: #888; text-align: center; padding: 10px; } .btn {
+      display: inline-block; margin-top: 15px; padding: 10px 20px;
+      background-color: #007bff; color: white; text-decoration: none;
+      border-radius: 5px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Appointment Time Slot Available</h2>
+      </div>
+      <div class="content">
+        <p>Dear Dr. <strong>{{doctorName}}</strong>,</p>
+
+        <p>An appointment has been requested by a customer for a time slot that
+          matches your availability.</p>
+
+        <p>If you are available and wish to take this appointment, please review
+          and approve it as soon as possible.</p>
+
+        <div class="details">
+          <p><strong>🧑‍🤝‍🧑 Customer:</strong> {{customerName}}</p>
+          <p><strong>📅 Date:</strong> {{appointmentDate}}</p>
+          <p><strong>⏰ Time:</strong> {{startTime}} – {{endTime}}</p>
+        </div>
+
+        <a class="btn" href="{{appointmentLink}}">Review & Approve Appointment</a>
+
+        <p>Thank you for your continued support and dedication.</p>
+
+        <p>Warm regards,<br />
+          <strong>Mobilab2u Team</strong></p>
+      </div>
+      <div class="footer">
+        This is a system-generated email. Please do not reply.
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Appointment Rescheduled Successfully</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f9;
+        padding: 20px;
+        color: #333;
+      }
+
+
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      .header {
+        background-color: #17a2b8;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .content {
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .details {
+        background-color: #eef2f5;
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 15px;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Your Appointment Has Been Rescheduled</h2>
+      </div>
+      <div class="content">
+        <p>Dear <strong>{{customerName}}</strong></p>
+
+        <p>Your appointment has been successfully rescheduled to a new time slot with your previously approved doctor.</p>
+
+        <p>We are pleased to confirm that your preferred previously approved doctor,
+          <strong>Dr. {{doctorName}}</strong>, is available at the new time.</p>
+
+        <div class="details">
+          <p><strong>👨‍⚕️ Doctor:</strong> Dr. {{doctorName}}</p>
+          <p><strong>📅 New Date:</strong> {{newDate}}</p>
+          <p><strong>⏰ New Time:</strong> {{startTime}} – {{endTime}}</p>
+        </div>
+
+        <p>If you need to make further changes, please contact our support team.</p>
+
+        <p>Go to <a href="{{appointmentLink}}">Appointment</a>.</p>
+
+        <p>Warm regards,<br />
+      <p>Administration Team,</p>
+      <p>Mobilab2u.com</p>
+      </div>
+      <div class="footer">
+        This is a confirmation email. No reply is necessary.
+      </div>
+    </div>
+  </body>
+</html>

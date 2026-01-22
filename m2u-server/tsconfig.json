@@ -1,0 +1,21 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "esModuleInterop": true
+    }
+  },
+  "externals": {
+    "mongoose-sequence": "commonjs mongoose-sequence"
+  },
+  "build": {
+    "rollupOptions": {
+      "external": ["mongoose-sequence"]
+    }
+  },
+  "extends": "./node_modules/fastify-tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts"]
+}

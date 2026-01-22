@@ -1,0 +1,11 @@
+{
+  "title": "Review Service Provider Body Schema",
+  "type": "object",
+  "properties": {
+    "adminApprovalStatus": {
+      "type": "string",
+      "enum": ["APPROVED", "DECLINED", "PENDING"]
+    }
+  },
+  "required": ["adminApprovalStatus"]
+}

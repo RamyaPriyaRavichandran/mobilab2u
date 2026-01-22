@@ -1,0 +1,70 @@
+{
+  "title": "Review Customer Test Body Schema",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SERVICE_PROVIDER_APPROVED",
+        "DECLINED",
+        "PENDING",
+        "SAMPLE_COLLECTED",
+        "SAMPLE_SUBMITTED_TO_LAB",
+        "LAB_ASSIGNED",
+        "NEED_SAMPLE_RE_COLLECTION",
+        "SAMPLE_RE_COLLECTED",
+        "RE_COLLECTED_SAMPLE_SUBMITTED_TO_LAB"
+      ]
+    },
+    "declineNote": {
+      "type": "string"
+    },
+    "testId": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "labId": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "NEED_SAMPLE_RE_COLLECTION" }
+        },
+        "required": ["status"]
+      },
+
+      "then": {
+        "required": ["reason"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "DECLINED" }
+        },
+        "required": ["status"]
+      },
+
+      "then": {
+        "required": ["declineNote"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "SUBMITTED_TO_LAB" }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["labId"]
+      }
+    }
+  ],
+  "required": ["status", "testId"]
+}

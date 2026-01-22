@@ -1,0 +1,28 @@
+{
+  "title": "Appointment Time Slot Reallocation  Schema",
+  "type": "object",
+  "properties": {
+    "appointmentDate": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "slotId": {
+      "type": "string"
+    },
+    "doctorLanguage": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "appointmentDate",
+    "startTime",
+    "endTime",
+    "slotId",
+    "doctorLanguage"
+  ]
+}

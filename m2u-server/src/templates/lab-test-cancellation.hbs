@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Test Cancellation</title>
+
+    <style>
+      body { margin: 0; padding: 0; background: #f7f9fb; font-family: Arial,
+      Helvetica, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 30px auto; background: #ffffff; border-radius: 10px; padding:
+      25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); } .header { font-size:
+      20px; font-weight: bold; text-align: center; color: #dc3545;
+      padding-bottom: 10px; } p { font-size: 15px; line-height: 1.6; margin:
+      10px 0; } .footer { margin-top: 25px; text-align: center; font-size: 13px;
+      color: #6b7280; border-top: 1px solid #e5e7eb; padding-top: 15px; }
+    </style>
+  </head>
+  <body>
+
+    <div class="email-container">
+
+      <div class="header">Lab Test Cancellation</div>
+
+      <p>Dear <strong>{{customerName}}</strong>,</p>
+
+      <p>We regret to inform you that your lab test has been cancelled.</p>
+
+      <p>If you have any questions or need further assistance, please do not
+        hesitate to contact us.</p>
+
+      <p>We apologize for any inconvenience this may have caused and appreciate
+        your understanding.</p>
+
+      <p>Best regards,</p>
+      <p>The Mobilab2u Team</p>
+
+      <div class="footer">
+        ©
+        {{currentYear}}
+        Mobilab2u. All rights reserved.
+      </div>
+    </div>
+
+  </body>
+</html>

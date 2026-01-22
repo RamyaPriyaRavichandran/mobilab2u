@@ -1,0 +1,40 @@
+{
+  "title": "Admin update HSP Profile Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "postCode": {
+      "type": "array"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "userRole": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "phone",
+    "city",
+    "state",
+    "postCode",
+    "address",
+    "userId",
+    "userRole"
+  ]
+}

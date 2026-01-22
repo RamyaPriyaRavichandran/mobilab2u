@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Cancelled</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 20px auto; background: #ffffff; border-radius: 10px; box-shadow: 0
+      4px 12px rgba(0, 0, 0, 0.05); padding: 20px; } .header { background-color:
+      #dc2626; /* Cancellation / Alert */ color: #ffffff; text-align: center;
+      padding: 20px; } .header h1 { margin: 0; font-size: 22px; } .content {
+      padding: 20px; font-size: 15px; line-height: 1.6; color: #374151; }
+      .info-box { background-color: #fef2f2; border-left: 4px solid #dc2626;
+      border-radius: 8px; padding: 15px; margin: 15px 0; } .info-box p { margin:
+      6px 0; } .footer { font-size: 13px; color: #6b7280; text-align: center;
+      padding-top: 20px; border-top: 1px solid #e5e7eb; margin-top: 20px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Test Cancelled</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Hi <b>Admin</b>,</p>
+
+        <p>
+          The following test/package has been
+          <b>cancelled</b>. Please review the details below:
+        </p>
+
+        <div class="info-box">
+          <p><b>Customer Name:</b> {{customerName}}</p>
+          <p><b>Test / Package:</b> {{packageName}}</p>
+          <p><b>Reason for Cancellation:</b> {{reason}}</p>
+          <p><b>Cancelled Date:</b> {{date}}</p>
+          <p><b>Cancelled Time:</b> {{time}}</p>
+          <p><b>Order ID:</b> {{orderId}}</p>
+        </div>
+
+        <p>
+          Please take any required follow-up actions such as refunds,
+          notifications, or record updates.
+        </p>
+
+        <p>
+          Regards,<br />
+          <b>Mobilab2u System</b>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          This is an automated notification. For assistance, contact
+          info@mobilab2u.com
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "title": "Add Medicine Schema",
+  "type": "object",
+  "properties": {
+    "symptoms": {
+      "type": "string"
+    },
+    "comorbidities": {
+      "type": "string"
+    },
+    "diagnosis": {
+      "type": "string"
+    },
+    "allergies": {
+      "type": "string"
+    },
+    "advice": {
+      "type": "string"
+    },
+    "followupDate": {
+      "type": "string"
+    },
+    "medicine": {
+      "type": "array"
+    }
+  },
+  "required": ["symptoms", "comorbidities", "diagnosis", "allergies"]
+}

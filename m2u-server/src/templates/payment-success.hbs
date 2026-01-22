@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Confirmation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f9fafb;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .email-container {
+        max-width: 650px;
+        margin: 20px auto;
+        background: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+      }
+
+      .header {
+        background-color: #2563eb;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .content {
+        padding: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #374151;
+      }
+
+      .content p {
+        margin-bottom: 14px;
+      }
+
+      .highlight-link {
+        color: #2563eb;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .highlight-link:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        font-size: 13px;
+        color: #6b7280;
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 20px;
+      }
+
+      .footer a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Welcome to Mobilab2u</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Dear <b>{{name}}</b>,</p>
+
+        <p>
+          Thank you for your payment. You will receive the receipt in a separate
+          email.
+        </p>
+
+        <p>
+          We are grateful to have you join our community of healthcare
+          professionals on Mobilab2u — where we strive to bring healthcare in
+          every form to the doorstep of our customers at an affordable cost for
+          people from all walks of life.
+        </p>
+
+        <p>
+          At Mobilab2u, we strive for the highest standards of healthcare
+          service, to ensure everyone is able to get the best care and medical
+          advice at their homes.
+        </p>
+
+        <p>
+          As we are in the midst of building our community of healthcare
+          partners before our services are opened to the public, please expect a
+          one to two months wait-time before you can start delivering services
+          through our website.
+        </p>
+
+        <p>
+          However, to value your time and enthusiasm, we will be taking this
+          period to provide free training on standard practices to be adhered to
+          in delivering our services. You will hear from us soon with the
+          details of the training, along with a handy starter kit that will be
+          sent to you.
+        </p>
+
+        <p>
+          We also value any contribution you can make to help our community grow
+          further to ensure our services are available for as many people as
+          possible when we go live. We have prepared a special referral link for
+          you, and will also be rewarding your efforts in kind. Read about our
+          limited-time referral policy here.
+        </p>
+
+        <p>
+          Have we mentioned that you are among the first 1,000 partners to sign
+          up with us? As a token of gratitude for your faith in us, you will
+          receive special early bird benefits, which you can read more about
+          <a href="{{frontEndUrl}}" class="highlight-link">here</a>.
+        </p>
+
+        <p>
+          We hope this is the start of a fruitful adventure and many years of
+          growth together. You’ll hear from us regularly as we keep you posted
+          on our live date.
+        </p>
+
+        <p>From,</p>
+        <p><b>Dr Ganeshan Palanisamy</b></p>
+        <p>Managing Director,</p>
+        <p>Mobilab2u.com</p>
+      </div>
+
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          Have questions? Contact our support team at
+          <a href="mailto:info@mobilab2u.com">info@mobilab2u.com</a>. | Mobilab2u
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

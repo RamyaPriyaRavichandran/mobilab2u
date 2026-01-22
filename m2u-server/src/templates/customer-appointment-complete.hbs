@@ -1,0 +1,286 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Consultation Completed</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      .email-header {
+        background-color: #f0f0f0;
+        padding: 12px;
+        border-bottom: 2px solid #ddd;
+      }
+      .email-header th {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        text-align: left;
+        padding: 12px;
+      }
+      .email-body td,
+      .email-body th {
+        font-size: 14px;
+        color: #555;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .email-footer {
+        text-align: center;
+        padding: 20px;
+      }
+      .btn {
+        display: inline-block;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .btn:hover {
+        background-color: #45a049;
+      }
+      .no-medicine {
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+        padding: 12px;
+      }
+        .card-container {
+        font-family: Arial, sans-serif;
+        background: #f9f9fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+      .title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .image-container {
+        position: relative;
+        display: inline-block;
+      }
+      .image-container img {
+        width: 170px;
+        height: 170px;
+        border-radius: 8px;
+      }
+      .badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #2563eb;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 12px;
+      }
+      .features {
+        background: #f9fafb;
+        min-height: 130px;
+        max-height: 130px;
+        overflow-y: auto;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+      .feature-item {
+        font-size: 14px;
+        color: #374151;
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .feature-item svg {
+        width: 16px;
+        height: 16px;
+        color: green;
+        margin-right: 6px;
+      }
+      .price-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+      }
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
+      .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2563eb;
+      }
+      .old-price {
+        font-size: 14px;
+        text-decoration: line-through;
+        color: #6b7280;
+      }
+      .discount {
+        background: #10b981;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 12px;
+      }
+      .btn {
+        display: block;
+        padding: 12px;
+        background: #2563eb;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 16px;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        background: #1d4ed8;
+      }
+      .card-main {
+        display: flex;
+        gap: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <h2>Doctor Consultation Completed</h2>
+      <p>Dear {{name}},</p>
+      <p>
+        We are pleased to inform you that your consultation with the doctor has
+        been successfully completed. Below are the details of your prescription
+        and follow-up appointments.
+      </p>
+      {{#if medicineDetail}}
+      <table style="width: 100%; border-collapse: collapse">
+        <thead class="email-header">
+          <tr>
+            <th>Name</th>
+            <th>Dosage</th>
+            <th>Frequency</th>
+            <th>Route</th>
+            <th>Before/After Food</th>
+            <th>Duration</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody class="email-body">
+          {{#each medicineDetail}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{dosage}}</td>
+            <td>{{frequency}}</td>
+            <td>{{route}}</td>
+            <td>{{beforeOrAfterFood}}</td>
+            <td>{{duration}}</td>
+            <td>{{price}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}} {{#if purchaseUrl}}
+      <div class="email-footer">
+        <a href={{purchaseUrl}} class="btn">Buy Medicines</a>
+      </div>
+      {{/if}}
+
+      <h3>Follow-Up Appointment</h3>
+      <p>
+        Your follow-up appointment is scheduled for
+        <b>{{followUpAppointmentDate}}</b>.
+      </p>
+      <a href={{appointmentBookingUrl}}>Book Now</a>
+      {{#if followupTestDetail}}
+      <h3>Follow-Up Test</h3>
+      <div>
+        {{#with followupTestDetail}}
+        <div class="card-container">
+        <div class="card">
+          <div class="title">{{name}}</div>
+          <div class="card-main">
+            <div class="image-container">
+              <img src={{imageURL}} alt="Test Image" />
+              <div class="badge">{{serviceType}}</div>
+            </div>
+            <div class="features">
+              {{#each options}}
+              <div class="feature-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 122.88 101.6"
+                  width="16px"
+                  height="16px"
+                >
+                  <path
+                    fill="#10a64a"
+                    d="M4.67,67.27c-14.45-15.53,7.77-38.7,23.81-24C34.13,48.4,42.32,55.9,48,61L93.69,5.3c15.33-15.86,39.53,7.42,24.4,23.36L61.14,96.29a17,17,0,0,1-12.31,5.31h-.2a16.24,16.24,0,0,1-11-4.26c-9.49-8.8-23.09-21.71-32.91-30Z"
+                  />
+                </svg>
+                {{type}}
+              </div>
+              {{/each}} {{else}}
+              <p></p>
+              <div class="feature-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 122.88 101.6"
+                  width="16px"
+                  height="16px"
+                >
+                  <path
+                    fill="#10a64a"
+                    d="M4.67,67.27c-14.45-15.53,7.77-38.7,23.81-24C34.13,48.4,42.32,55.9,48,61L93.69,5.3c15.33-15.86,39.53,7.42,24.4,23.36L61.14,96.29a17,17,0,0,1-12.31,5.31h-.2a16.24,16.24,0,0,1-11-4.26c-9.49-8.8-23.09-21.71-32.91-30Z"
+                  />
+                </svg>
+                Available at Home
+              </div>
+            </div>
+          </div>
+          <div class="price-section">
+            <div>
+              <span class="price">RM {{offerPrice}}</span>
+              <span class="old-price">RM {{price}}</span>
+            </div>
+            <div class="discount">{{offer}}% OFF</div>
+          </div>
+          <a href="{{purchaseUrl}}" class="btn">Buy Now</a>
+        </div>
+        </div>
+        {{/with}} {{else}}
+        <p></p>
+      </div>
+      {{/if}}
+
+      <p>Thank you for choosing Mobilab2u.</p>
+      <p>Best regards,</p>
+      <p>Administration Team</p>
+      <p><b>Mobilab2u.com</b></p>
+    </div>
+  </body>
+</html>

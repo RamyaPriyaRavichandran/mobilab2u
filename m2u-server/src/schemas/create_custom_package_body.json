@@ -1,0 +1,92 @@
+{
+  "title": "Create Custom Package Schema",
+  "type": "object",
+  "properties": {
+    "packageName": {
+      "type": "string"
+    },
+    "packageDescription": {
+      "type": "string"
+    },
+    "selectedPackage": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "members": {
+      "type": "number"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "labShare": {
+      "type": "number"
+    },
+    "gpShare": {
+      "type": "number"
+    },
+    "hspShare": {
+      "type": "number"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "fastingHour": {
+      "type": "string"
+    },
+    "customerShare": {
+      "type": "number"
+    },
+    "mobilabShare": {
+      "type": "number"
+    },
+    "offerPrice": {
+      "type": "number"
+    },
+    "document": {
+      "type": "object"
+    },
+    "image": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "selectedPackage": { "const": "CREATE_CUSTOM_PACKAGE" }
+        },
+        "required": ["selectedPackage"]
+      },
+      "then": {
+        "required": [
+          "name",
+          "description",
+          "type",
+          "members",
+          "serviceType",
+          "price",
+          "labShare",
+          "gpShare",
+          "hspShare",
+          "duration",
+          "fastingHour",
+          "customerShare",
+          "mobilabShare",
+          "offerPrice"
+        ]
+      }
+    }
+  ],
+  "required": ["packageName", "packageDescription", "selectedPackage"]
+}

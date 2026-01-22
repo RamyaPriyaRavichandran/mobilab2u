@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Accepted</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f9fafb;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .email-container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+      }
+
+      .header {
+        background-color: #16a34a; /* Green for success/acceptance */
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .content {
+        padding: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #374151;
+      }
+
+      .content ul {
+        padding-left: 18px;
+        margin: 12px 0;
+      }
+
+      .content ul li {
+        margin-bottom: 6px;
+      }
+
+      .footer {
+        font-size: 13px;
+        color: #6b7280;
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 20px;
+      }
+
+      .footer a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="header">
+        <h1>Appointment Accepted</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Hi <b>{{name}}</b>,</p>
+
+        <p>
+          More good news! Dr. <b>{{doctorName}}</b> has just accepted your
+          appointment request for <b>{{date}}</b>.
+        </p>
+
+        <ul>
+          <li><b>Time:</b> {{startTime}} - {{endTime}}</li>
+        </ul>
+
+        <p>
+          Hang tight! We're preparing your final confirmation and will send you
+          the meeting link in a separate email very soon.
+        </p>
+
+        <p>
+          Best wishes, <br />
+          From Team Mobilab2u
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          Have questions? Contact our support team at
+          <a href="mailto:info@mobilab2u.com">info@mobilab2u.com</a> or visit our
+          FAQ page. | Mobilab2u
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Withdrawal Approved</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .header {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .header h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .content {
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .details {
+        background-color: #eef2f5;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+        font-weight: bold;
+      }
+
+      .footer {
+        font-size: 13px;
+        color: #666;
+        text-align: center;
+        padding: 15px;
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h2>Wallet Withdrawal Approved</h2>
+      </div>
+
+      <!-- Body -->
+      <div class="content">
+        <p>Dear <strong>{{name}}</strong>,</p>
+
+        <p>
+          Your wallet withdrawal request has been <strong>approved</strong> by the Mobilab2U admin portal.
+        </p>
+
+        <div class="details">
+          <p>Withdrawal Amount: {{withdrawalAmount}}</p>
+          <p>Wallet Balance: {{walletBalance}}</p>
+        </div>
+
+        <p>
+          The amount will be credited to your bank account within 2-3 business days.
+        </p>
+
+        <p>Thank you for using Mobilab2U!</p>
+
+        <p>Warm regards,<br/>
+        Administration Team,<br/>
+        Mobilab2U</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        © {{currentYear}} Mobilab2U. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>

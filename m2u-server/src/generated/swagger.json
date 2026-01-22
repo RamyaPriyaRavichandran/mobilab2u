@@ -1,0 +1,3512 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mobilab2u API collections",
+    "version": "0.0.1",
+    "description": "All API collections"
+  },
+  "components": {
+    "securitySchemes": {
+      "Authorization": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": {
+    "Authorization": []
+  },
+  "host": "0.0.0.0:9000",
+  "paths": {
+    "/api/v1/appointment/add-time-slot": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Add time slot",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "date",
+                  "startTime",
+                  "endTime"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Availability added"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/review-appointment": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Review appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "availabilityId": {
+                    "type": "string"
+                  },
+                  "appointmentId": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "date",
+                  "availabilityId",
+                  "appointmentId",
+                  "startTime",
+                  "endTime"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Availability added"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/add-appointment-prescription/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Review appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "symptoms": {
+                    "type": "string"
+                  },
+                  "prescription": {
+                    "type": "string"
+                  },
+                  "comorbidities": {
+                    "type": "string"
+                  },
+                  "diagnosis": {
+                    "type": "string"
+                  },
+                  "allergies": {
+                    "type": "string"
+                  },
+                  "advice": {
+                    "type": "string"
+                  },
+                  "followupDate": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "symptoms",
+                  "prescription",
+                  "comorbidities",
+                  "diagnosis",
+                  "allergies",
+                  "advice",
+                  "followupDate"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Prescription added"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/add-appointment-referral/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Review appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "complaint": {
+                    "type": "string"
+                  },
+                  "findings": {
+                    "type": "string"
+                  },
+                  "investigation": {
+                    "type": "string"
+                  },
+                  "management": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "complaint",
+                  "findings",
+                  "comorbidities",
+                  "investigation",
+                  "management"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Referal added"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/add-appointment-test/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Appointment test",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "description"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Test added"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/mark-consultation-done/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Appointment consultation completed",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Appointment consultation completed"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/update-medicine-price/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Medicine price update",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "medicine": {
+                    "type": "array"
+                  },
+                  "price": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "medicine",
+                  "price"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Medicine price update"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/create-custom-package/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Create custom Plan",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "packageName": {
+                    "type": "string"
+                  },
+                  "packageDescription": {
+                    "type": "string"
+                  },
+                  "selectedPackage": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "serviceType": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "labShare": {
+                    "type": "number"
+                  },
+                  "gpShare": {
+                    "type": "number"
+                  },
+                  "hspShare": {
+                    "type": "number"
+                  },
+                  "duration": {
+                    "type": "string"
+                  },
+                  "fastingHour": {
+                    "type": "string"
+                  },
+                  "customerShare": {
+                    "type": "number"
+                  },
+                  "mobilabShare": {
+                    "type": "number"
+                  },
+                  "offerPrice": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "packageName",
+                  "packageDescription",
+                  "selectedPackage",
+                  "name",
+                  "description",
+                  "type",
+                  "members",
+                  "serviceType",
+                  "price",
+                  "labShare",
+                  "gpShare",
+                  "hspShare",
+                  "duration",
+                  "fastingHour",
+                  "customerShare",
+                  "mobilabShare",
+                  "offerPrice"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Custom Plan created"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/review-appointment-consultation/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Admin consultation review",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Custom Plan created"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/appointment-cancellation/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Appointment Cancellation",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Appointment cancelled"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/confirm-appointment/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Confirm Appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Appointment confirmed"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/time-slot-re-allocation-by-admin/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Confirm Appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "doctorId": {
+                    "type": "string"
+                  },
+                  "slotId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "doctorId",
+                  "slotId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Appointment time slot re-allocation success"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/time-slot-re-allocation-by-customer/{appointmentId}": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Appointment time slot re-allocation by customer",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "doctorLanguage": {
+                    "type": "string"
+                  },
+                  "slotId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "slotId",
+                  "doctorLanguage"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Appointment time slot re-allocation success"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-available-time-slots": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customer appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "date"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "get-available-time-slots"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-doctor-time-slot": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get doctor time slot",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Time slots"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-customer-appointments-by-doctor-availability": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customer appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Customer appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/counts": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get appointment counts",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get appointments count"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-customer-appointment/{appointmentId}": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customer appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/appointment-by-customer-id": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customer appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/all-appointments": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customers appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customers appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-purchased-medicines": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get customers appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customers appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-doctors-by-availability-slot-data": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get doctors list by availability slot data",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment date"
+          },
+          {
+            "in": "query",
+            "name": "startTime",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment start time"
+          },
+          {
+            "in": "query",
+            "name": "endTime",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment end time"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get doctor availability by slot data"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-appointment-medicine/{appointmentId}": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get appointment medicine",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get appointment medicine"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-appointment-by-redirection-id/{redirectId}": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get appointment by redirectId",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "redirectId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "redirect id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get appointment"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-followup-appointment-availability-by-appointment-id/{appointmentId}": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get followup appointment availability",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get appointment medicine"
+          }
+        }
+      }
+    },
+    "/api/v1/appointment/get-appointment-approved-doctor-availability-by-appointment-id/{appointmentId}": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "description": "Get approved doctor availability for an appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appointmentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment id"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Appointment date"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get appointment medicine"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/update-profile": {
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "User update their profile",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "dateOfBirth": {
+                    "type": "string"
+                  },
+                  "postCode": {
+                    "type": "number"
+                  },
+                  "nricNumber": {
+                    "type": "number"
+                  },
+                  "registrationNumber": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "phone",
+                  "city",
+                  "state",
+                  "address",
+                  "postCode",
+                  "nricNumber",
+                  "registrationNumber",
+                  "dateOfBirth"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Profile update success"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/all": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "All customer",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "All customers"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/user-data": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "All customer",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "All customers"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/customer-purchased-tests": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Customer purchased lab tests",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Customers purchased tests"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/customer-address": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Get customer address",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer address"
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{id}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Get customer",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "customer id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/review": {
+      "put": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "HSP Review labtest",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "testId": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "declineNote": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status",
+                  "testId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Review added"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/cancellation/{testId}": {
+      "put": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Admin cancel lab test",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "testId": {
+                    "type": "object"
+                  },
+                  "cancellationReason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "testId",
+                  "cancellationReason"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Review added"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/sp-customer-tests": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "HSP get all labTest requests",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "service success"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/lab-test-counts": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Get all labTest counts",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "service success"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/lab-customer-tests": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Lab Get all lab test requests",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get all labs"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/sample-recollection-approval": {
+      "put": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Sample recollection approval admin",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "testId": {
+                    "type": "object"
+                  },
+                  "customerAppointmentDate": {
+                    "type": "string"
+                  },
+                  "customerAppointmentTime": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "testId",
+                  "customerAppointmentDate",
+                  "customerAppointmentTime",
+                  "status"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Sample recollection approved"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/reschedule": {
+      "put": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Test date and time reschedule by admin",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "testId": {
+                    "type": "object"
+                  },
+                  "customerAppointmentDate": {
+                    "type": "string"
+                  },
+                  "customerAppointmentTime": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "testId",
+                  "customerAppointmentDate",
+                  "customerAppointmentTime"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Sample recollection approved"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/upload-test-reports/{testId}": {
+      "put": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Lab upload lab test report",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "testId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the Lab test"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reportDocOne": {
+                    "type": "object"
+                  },
+                  "reportDocTwo": {
+                    "type": "object"
+                  },
+                  "reportDocThree": {
+                    "type": "number"
+                  },
+                  "reportDocFour": {
+                    "type": "object"
+                  },
+                  "reportDocFive": {
+                    "type": "object"
+                  },
+                  "reportDocSix": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "reportDocOne"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Report added"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/customer-test/{testId}": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Get customer test requests by lab test id",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "testId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the test"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get Lab test"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/user-tests": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Get customer lab tests",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "All customers"
+          }
+        }
+      }
+    },
+    "/api/v1/lab-test/test-by-customer-id/{customerId}": {
+      "get": {
+        "tags": [
+          "Lab Test"
+        ],
+        "description": "Get customer lab test by customer id",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "customerId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "customer test"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Get customer test"
+          }
+        }
+      }
+    },
+    "/api/v1/lab": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Create lab",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "organization": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "postCode": {
+                    "type": "number"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email",
+                  "organization",
+                  "city",
+                  "state",
+                  "phone",
+                  "password",
+                  "postCode",
+                  "address",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Plan created"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Get user lab",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get user lab"
+          }
+        }
+      }
+    },
+    "/api/v1/lab/{id}": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Update lab",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the Lab"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "organization": {
+                    "type": "number"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "postCode": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Plan created"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Delete lab",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the Lab"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Delete lab"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Get lab",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the Lab"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get lab"
+          }
+        }
+      }
+    },
+    "/api/v1/lab/local-labs": {
+      "get": {
+        "tags": [
+          "Service Providers"
+        ],
+        "description": "Get all labs",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "city",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get all labs"
+          }
+        }
+      }
+    },
+    "/api/v1/packages": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Create Plan",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "serviceType": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "hspShare": {
+                    "type": "number"
+                  },
+                  "gpShare": {
+                    "type": "number"
+                  },
+                  "customerShare": {
+                    "type": "number"
+                  },
+                  "mobilabShare": {
+                    "type": "number"
+                  },
+                  "labShare": {
+                    "type": "number"
+                  },
+                  "offerPrice": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "description",
+                "type",
+                "serviceType",
+                "price",
+                "hspShare",
+                "gpShare",
+                "customerShare",
+                "mobilabShare",
+                "labShare",
+                "offerPrice"
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Plan created"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Get all plans",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "All plans"
+          }
+        }
+      }
+    },
+    "/api/v1/packages/{id}": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Update Plan",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the service provider"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "serviceType": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "offerPrice": {
+                    "type": "number"
+                  },
+                  "hspShare": {
+                    "type": "number"
+                  },
+                  "gpShare": {
+                    "type": "number"
+                  },
+                  "customerShare": {
+                    "type": "number"
+                  },
+                  "mobilabShare": {
+                    "type": "number"
+                  },
+                  "labShare": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "description",
+                "type",
+                "serviceType",
+                "price",
+                "hspShare",
+                "gpShare",
+                "customerShare",
+                "mobilabShare",
+                "labShare",
+                "offerPrice"
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Plan created"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin",
+          "Customer"
+        ],
+        "description": "Get dingle plan",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the service provider"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "All plans"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Delete Package",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the Package"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Delete Packages"
+          }
+        }
+      }
+    },
+    "/api/v1/packages/customer-packages": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Packages",
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Packages"
+          }
+        }
+      }
+    },
+    "/api/v1/packages/test-packages": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Test Packages",
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Packages"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/service-provider-fees": {
+      "get": {
+        "tags": [
+          "Service Providers"
+        ],
+        "description": "Pay service provider initial fees",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment url created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Payment url created"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/payment/customer-followup-test-fees": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "customer follow up test",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "packageId": {
+                    "type": "string"
+                  },
+                  "appointmentId": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "array"
+                  },
+                  "customerAppointmentDate": {
+                    "type": "string"
+                  },
+                  "customerAppointmentTime": {
+                    "type": "string"
+                  },
+                  "customerAddress": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "appointmentId",
+                  "packageId",
+                  "customerAppointmentDate",
+                  "customerAppointmentTime",
+                  "customerAddress"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/customer-test-fees": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Create lab report",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "packageId": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "array"
+                  },
+                  "customerAppointmentDate": {
+                    "type": "string"
+                  },
+                  "customerAppointmentTime": {
+                    "type": "string"
+                  },
+                  "customerAddress": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "packageId",
+                  "customerAppointmentDate",
+                  "customerAppointmentTime",
+                  "customerAddress"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/book-doctor-appointment": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Pay appointment fees",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appointmentDate": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "slotId": {
+                    "type": "string"
+                  },
+                  "packageId": {
+                    "type": "string"
+                  },
+                  "doctorLanguage": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "appointmentDate",
+                  "doctorLanguage",
+                  "slotId",
+                  "startTime",
+                  "endTime",
+                  "doctorLanguage"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/book-followup-doctor-followup-appointment": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Create doctor appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appointmentId": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "slotId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "appointmentId",
+                  "startTime",
+                  "endTime",
+                  "slotId",
+                  "packageId",
+                  "doctorLanguage"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/book-random-doctor-followup-appointment": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Create doctor appointment",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appointmentId": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "slotId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "appointmentId",
+                  "startTime",
+                  "endTime",
+                  "slotId",
+                  "packageId",
+                  "doctorLanguage"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/payment/repay-customer-test-fees": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Pay lab test",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "testId": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "testId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Payment link created"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/review/{id}": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Review Service Provider",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the service provider"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "service provider"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/review-hsp-or-gp": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Review Service Provider",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "service provider"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/admin-update-hsp-profile": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin update HSP profile",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  },
+                  "userRole": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "phone",
+                  "city",
+                  "state",
+                  "address",
+                  "userId",
+                  "userRole"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Profile update success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/admin-update-gp-profile": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin update GP profile",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  },
+                  "userRole": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "phone",
+                  "city",
+                  "state",
+                  "address",
+                  "userId",
+                  "userRole"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Profile update success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/user-update-profile": {
+      "put": {
+        "tags": [
+          "Service Provider"
+        ],
+        "description": "User update their profile",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "number"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "userRole": {
+                    "type": "string"
+                  },
+                  "postCode": {
+                    "type": "number"
+                  },
+                  "nricNumber": {
+                    "type": "number"
+                  },
+                  "isESign": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "phone",
+                  "city",
+                  "state",
+                  "address",
+                  "postCode",
+                  "nricNumber",
+                  "userRole",
+                  "isESign"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Profile update success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/kit-fees-detail": {
+      "get": {
+        "tags": [],
+        "description": "Get Service Providers kit fees detail",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "HSP kit fees success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/all": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Get Service Providers",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "service success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/user-data": {
+      "get": {
+        "tags": [
+          "Service Providers"
+        ],
+        "description": "Get User Service Provider Data",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "service success"
+          }
+        }
+      }
+    },
+    "/api/v1/service-provider/{id}": {
+      "get": {
+        "tags": [
+          "Service Providers"
+        ],
+        "description": "Get Service Provider By Id",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the service provider"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "service provider"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Login to the application",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "default": "mobilab2u@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": 123456789
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Login success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/send-otp-email": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Otp for register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "default": "mobilab2u@gmail.com"
+                  }
+                },
+                "required": [
+                  "email"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "OTP success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/send-otp-phone": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Otp for update phone number",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string",
+                    "default": 123456789
+                  }
+                },
+                "required": [
+                  "phone"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "OTP success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/register": {
+      "post": {
+        "tags": [
+          "Service Providers"
+        ],
+        "description": "register to the application",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "boolean"
+                  },
+                  "emailCode": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "address2": {
+                    "type": "string"
+                  },
+                  "postCode": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "medicalQualification": {
+                    "type": "string"
+                  },
+                  "other": {
+                    "type": "string"
+                  },
+                  "mQdocOne": {
+                    "type": "object"
+                  },
+                  "mQdocTwo": {
+                    "type": "object"
+                  },
+                  "mQdocThree": {
+                    "type": "object"
+                  },
+                  "mQdocFour": {
+                    "type": "object"
+                  },
+                  "passportSizePhoto": {
+                    "type": "object"
+                  },
+                  "myKad": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "userName",
+                  "email",
+                  "password",
+                  "phone",
+                  "address",
+                  "otp",
+                  "emailCode",
+                  "postCode",
+                  "phone",
+                  "city",
+                  "state",
+                  "country",
+                  "address2",
+                  "address",
+                  "medicalQualification",
+                  "other",
+                  "mQdocOne",
+                  "mQdocTwo",
+                  "passportSizePhoto",
+                  "mykad"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Serice provider register success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/customer-register": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "Customer register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "boolean"
+                  },
+                  "emailCode": {
+                    "type": "string"
+                  },
+                  "nricNumber": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "dateOfBirth": {
+                    "type": "date"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "lat": {
+                    "type": "number"
+                  },
+                  "lng": {
+                    "type": "number"
+                  },
+                  "postCode": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email",
+                  "password",
+                  "phone",
+                  "address",
+                  "dateOfBirth",
+                  "otp",
+                  "emailCode",
+                  "postCode",
+                  "phone",
+                  "nricNumber",
+                  "city",
+                  "state",
+                  "address"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Customer register success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/forgot-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Forgot password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "default": "mobilab2u@gmail.com"
+                  }
+                },
+                "required": [
+                  "email"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Password reset link send to your email"
+          }
+        }
+      }
+    },
+    "/api/v1/user/change-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Change password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "passwordResetToken": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": "Sanjaijb93@"
+                  }
+                },
+                "required": [
+                  "passwordResetToken",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Pasword reset success."
+          }
+        }
+      }
+    },
+    "/api/v1/user/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Reset your password",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "currentPassword": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "currentPassword",
+                  "newPassword"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Password reset success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/refresh": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Make user refresh token",
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "refresh success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/logout": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "User logout",
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "logout success"
+          }
+        }
+      }
+    },
+    "/api/v1/user/user-types": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get User types",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "User types"
+          }
+        }
+      }
+    },
+    "/api/v1/user/perms": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Get User perms",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": null
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "User perms"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/verify-user": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "Verify auth user email for wallet redeem",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Verification code send to user login credentials"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/redeem": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "With draw wallet",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "withdrawAmount": {
+                    "type": "number"
+                  },
+                  "otp": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "withdrawAmount",
+                  "otp"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Withdrawal request created"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/redeem-review": {
+      "put": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "With draw wallet",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Wallet id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "number"
+                  },
+                  "declineNote": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "message": "Withdrawal request created"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/redeem/all": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "Get all wallet",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get all wallet"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/user-wallet-details": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "Get user wallet details",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get user wallet details"
+          }
+        }
+      }
+    },
+    "/api/v1/wallet/redeem/{id}": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "description": "Get wallet detail",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Wallet id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "message": "Get aWallet"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}

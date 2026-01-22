@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sample Submitted to Lab</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; } .container { max-width: 600px; margin: 20px auto;
+      background: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0 4px
+      12px rgba(0,0,0,0.05); } .header { background-color: #0ea5e9; color: #fff;
+      text-align: center; padding: 20px; border-radius: 10px 10px 0 0; }
+      .content { font-size: 15px; color: #374151; line-height: 1.6; padding:
+      20px; } .info-box { background-color: #f1f5f9; padding: 15px;
+      border-radius: 8px; margin: 15px 0; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Sample Submitted to Lab</h2>
+      </div>
+
+      <div class="content">
+        <p>Hi <b>Admin</b>,</p>
+
+        <p>
+          The sample has been successfully submitted to the lab for the
+          following test:
+        </p>
+
+        <div class="info-box">
+          <p><b>Customer:</b> {{customerName}}</p>
+          <p><b>Test / Package:</b> {{packageName}}</p>
+          <p><b>HSP:</b> {{hspName}}</p>
+          <p><b>Lab:</b> {{labName}}</p>
+          <p><b>Date:</b> {{date}}</p>
+          <p><b>Time:</b> {{time}}</p>
+          <p><b>Order ID:</b> {{orderId}}</p>
+        </div>
+
+        <p>
+          Please continue tracking the test progress and results.
+        </p>
+
+        <p>
+          Regards,<br />
+          <b>Mobilab2u System</b>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

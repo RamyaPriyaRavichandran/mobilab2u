@@ -1,0 +1,33 @@
+{
+  "title": "Lab Body Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "postCode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
+  }
+}

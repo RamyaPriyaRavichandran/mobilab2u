@@ -1,0 +1,148 @@
+const errorsMessage = {
+  VERIFY_YOUR_PHONE_NUMBER: 'Please verify your phone number',
+  USER_ID_NOT_FOUND: 'User id not found',
+  PHONE_NUMBER_IS_REQUIRED: 'Phone number is required',
+  USER_NOT_FOUND: 'User not found',
+  OTP_NOT_FOUND: 'OTP not found',
+  EMAIL_ALREADY_EXISTING_USER:
+    'This email is already associated with an account.',
+  PLAN_ID_NOT_FOUND: 'Plan id not found',
+  PLAN_NOT_FOUND: 'Plan not found',
+  LAB_DETAIL_NOT_FOUND: 'Lab detail not found',
+  LAB_ID_NOT_FOUND: 'Lab id not found',
+  LAB_TEST_NOT_FOUND: 'Lab test detail not found',
+  SERVICE_PROVIDER_NOT_FOUND: 'Service provider not found',
+  SERVICE_PROVIDER_ID_NOT_FOUND: 'Service provider id not found',
+  ADMIN_APPROVAL_PENDING: 'Please wait for approval from our admin panel',
+  ADMIN_APPROVAL_NOT_COMPLETED:
+    'Admin approval not completed, please wait for approval',
+  ADMIN_APPROVAL_DECLINED:
+    'Your registration was declined by the admin. As a result, you are unable to log in.',
+  EMAIL_CODE_NOT_FOUND: 'Please validate your email and submit the code',
+  VERIFY_EMAIL: 'Please verify your email',
+  VERIFY_PHONE: 'Please verify your phone',
+  VERIFICATION_CODE_EXPIRED:
+    'Your email verification code has expired. please retry',
+  PHONE_VERIFICATION_CODE_EXPIRED:
+    'Your phone verification code has expired. please retry',
+  VERIFICATION_CODE_NOT_MATCH:
+    'Email verification code and email do not match.',
+  PHONE_VERIFICATION_CODE_NOT_MATCH:
+    'Phone verification code and phone number do not match.',
+  INVALID_PASSWORD: 'Invalid password',
+  ACCESS_DENIED: 'Access denied',
+  UN_AUTHORIZED: 'Unauthorized',
+  TOKEN_EXPIRED: 'Token expired, User logged out',
+  REFRESH_TOKEN_EXPIRED: 'Refresh Token Expired',
+  FORBIDDEN: 'Forbidden',
+  USER_LOGGED_OUT: 'User logged out',
+  CHANGE_PASSWORD_ERROR: 'Something went wrong while resetting the password',
+  INVALID_CURRENT_PASSWORD: 'Invalid current password',
+  CORS_ERROR: 'Not allowed by CORS',
+  MONGO_CONNECTION_ERROR: 'Mongo connection failed',
+  CUSTOMER_TEST_REQUEST_NOT_FOUND: 'Customer test request detail not found',
+  STRIPE_SIGNATURE_NOT_FOUND: 'Missing signature or raw body',
+  SAMPLE_COLLECTION_SUCCESS: 'Test sample picked',
+  MEMBERS_DETAIL_NOT_FOUND: 'Members detail not found',
+  MEMBERS_LIMIT_EXCEEDED: 'Members limit higher than package limit',
+  SERVICE_PROVIDER_NOT_APPROVED: 'You are not approved for this test',
+  SAMPLE_COLLECTION_ALREADY_UPDATED: 'Sample collection status already updated',
+  SAMPLE_COLLECTION_NOT_UPDATED:
+    'Sample collection not marked, please update sample collected status',
+  LAB_ALREADY_ASSIGNED: 'Lab already assigned for this test',
+  SERVICE_PROVIDER_APPROVED: 'Service provider already approved this test',
+  CUSTOMER_TEST_ID_NOT_FOUND: 'Customer test id not found',
+  CUSTOMER_TEST_COMPLETED: 'Customer test completed',
+  CUSTOMER_ID_NOT_FOUND: 'Customer id not found',
+  DOCUMENT_REQUIRED: 'Image is required',
+  CUSTOMER_NOT_FOUND: 'Customer not found',
+  SERVICE_PROVIDER_PAYMENT_ERROR: 'Please pay kit fees and try again',
+  APPOINTMENT_TIME_SLOT_NOT_AVAILABLE:
+    'Doctor time slot not available for the time',
+  APPOINTMENT_DETAIL_NOT_FOUND: 'Doctor appointment detail not found',
+  DOCTOR_AVAILABILITY_NOT_FOUND: 'Doctor availability not found',
+  DOCTOR_NOT_FOUND: 'Doctor not found',
+  APPOINTMENT_ADDRESS_REQUIRED: 'Appointment address is required',
+  LAB_NOT_ASSIGNED: 'Lab was not assigned',
+  APPOINTMENT_DATE_REQUIRED: 'Appointment date is required',
+  APPOINTMENT_TIME_REQUIRED: 'Appointment time is required',
+  APPOINTMENT_PAYMENT_FAILED:
+    'Your payment failed for the created appointment. Go to the appointment section to make a payment and confirm your appointment',
+  APPOINTMENT_ID_NOT_FOUND: 'Appointment id not found',
+  MEDICINE_DETAIL_NOT_FOUND: 'Medicine detail not found',
+  APPOINTMENT_PRESCRIPTION_NOT_FOUND: 'Appointment prescription not found',
+  APPOINTMENT_FOLLOWUP_TEST_NOT_FOUND: 'Appointment follow-up test not found',
+  CUSTOMER_NOT_MATCHING_FOR_EXISTING_APPOINTMENT:
+    'Customer is not matching for appointment',
+  MEDICINE_ID_IS_REQUIRED: 'Medicine id is required',
+  WALLET_WITHDRAWAL_ERROR: 'Withdrawal amount is higher than wallet balance',
+  WALLET_WITHDRAWAL_DETAIL_NOT_FOUND: 'Wallet withdrawal request not found',
+  WALLET_ID_NOT_FOUND: 'Wallet id not found',
+  WALLET_BALANCE_NOT_FOUND: 'Wallet balance not found',
+  DOCTOR_PRESCRIPTION_NOT_FOUND: 'Please add a prescription',
+  WITHDRAW_AMOUNT_IS_REQUIRED: 'Withdraw amount is required',
+  APPOINTMENT_DATE_NOT_EXCEEDED:
+    'Appointment date is not exceeded. please wait scheduled date',
+  APPOINTMENT_DATE_EXPIRED:
+    'Appointment date is expired. Please select future date',
+  TEST_DETAIL_NOT_FOUND: 'Test detail not found',
+  WALLET_REDEEM_REQUEST_NOT_FOUND: 'Wallet redeem request not found',
+  WALLET_REDEEM_REQUEST_ALREADY_APPROVED:
+    'Wallet redeem request already approved',
+  APPROVE_MEDICINE: 'Please approve prescription and save',
+  CREATE_A_CUSTOM_PACKAGE: 'Please create test',
+  REDIRECT_ID_NOT_FOUND: 'Redirect id not found',
+  HSP_DE_ACTIVE: 'Your login has De-activated by admin panel',
+  APPROVED_APPOINTMENT_ALREADY_EXIST:
+    'Approved appointment already exist for this date and time',
+  USER_APPOINTMENT_ALREADY_EXIST:
+    'Appointment already exist for this date and time',
+  CONSULTATION_MEDICINE_DETAIL_NOT_FOUND:
+    "Consulted doctor didn't added medicine details, You cant able to buy this",
+  ADD_APPOINTMENT_TEST_ERROR: 'Name and description is required',
+  SELECTED_PACKAGE_NOT_AN_OBJECT_ID:
+    'Selected package id is not a mongo object id',
+  NOT_A_VALID_OBJECT_ID: 'Not a valid object id',
+  SELECT_E_SIGN: 'Please select your E-sign',
+  ENTER_CUSTOMER_OTP: 'Please enter customer otp',
+  ENTER_LAB_OTP: 'Please enter lab otp',
+  LOGIN_USER_DATA_NOT_FOUND: 'Logged-in user data not found',
+  SELECT_APPROVE_OR_DECLINE: 'Please select approve/decline',
+  LAB_REASON_REQUIRED: 'Reason is required',
+  LAB_ID_REQUIRED: 'Please select lab',
+  DECLINE_NOTE_REQUIRED: 'Decline note required',
+  OTP_MUST_BE_SIX_DIGIT: 'OTP must be exact 6 digit',
+  PAYMENT_NOT_FOUND: 'Payment not found',
+  APPOINTMENT_CANCELLED: 'Appointment already cancelled',
+  NOT_ACCEPTABLE_DOCTOR: 'Not acceptable doctor',
+  PLEASE_SELECT_FUTURE_DATE: 'Please select future date',
+  PLEASE_SELECT_FUTURE_TIME: 'Please select future time',
+  TIME_SLOT_EXPIRED: 'Time slot is expired',
+  DOCTOR_ID_NOT_FOUND: 'Doctor id not found',
+  APPOINTMENT_RESCHEDULING_TIME_EXCEEDED:
+    'Appointment rescheduling time exceeded',
+  APPOINTMENT_TIME_SLOT_RE_ALLOCATION_ALREADY_DONE:
+    'Appointment time slot reallocation already done',
+  MISSING_REQUIRED_FIELDS: 'Missing required fields: startTime, endTime, date',
+  REFERRAL_DOCTOR_IS_REQUIRED: 'Referral doctor is required',
+  LANGUAGE_IS_REQUIRED: 'Please update your language in profile section',
+  UPDATE_E_SIGN: 'Please update your E-sign in profile section',
+  APPOINTMENT_TIME_NOT_EXCEEDED:
+    'The appointment time has not been reached yet. Please wait until 1 hour before your appointment.',
+  AREA_HSP_NOT_FOUND:
+    'healthcare service providers not found in selected area and post code',
+  AREA_LABS_NOT_FOUND: 'labs not found in selected area and post code',
+  OTP_LIMIT_EXCEEDED:
+    'OTP limit exceeded. Please try again after 1 hour of time',
+  LAB_TEST_CANCELLED: 'Lab test has been cancelled',
+  LAB_TEST_ID_NOT_FOUND: 'Lab test id not found',
+  CUSTOMER_APPOINTMENT_DATE_REQUIRED: 'Customer appointment date required',
+  CUSTOMER_APPOINTMENT_TIME_REQUIRED: 'Customer appointment time required',
+  BLOOD_TEST_ALREADY_COMPLETED: 'Test already completed',
+  BLOOD_TEST_DATE_AND_TIME_ALREADY_CHANGED:
+    'Customer appointment date and time already changed',
+  CANCELLATION_REASON_REQUIRED: 'Test cancellation is required',
+  NOT_A_VALID_LAB: 'Not a valid lab',
+}
+
+export default errorsMessage

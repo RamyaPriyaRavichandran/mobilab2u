@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Service provider initial kit fees",
+    "description": "Serivce provider can pay our initial kit fees and got kit from admin panel",
+    "type": "INDIVIDUAL",
+    "serviceType": "SERVICE_PROVIDER_KIT_FEES",
+    "price": 600,
+    "offerPrice": 600
+  }
+]

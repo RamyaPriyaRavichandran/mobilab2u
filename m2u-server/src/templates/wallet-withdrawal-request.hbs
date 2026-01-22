@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal Request Sent</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .header {
+      background-color: #0b6efd;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .body {
+      padding: 25px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0b6efd;
+    }
+
+    .footer {
+      padding: 18px;
+      font-size: 13px;
+      text-align: center;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      Mobilab2U Wallet Withdrawal
+    </div>
+
+    <div class="body">
+      <p>Hi <strong>{{userName}}</strong>,</p>
+
+      <p>Your wallet withdrawal request has been successfully <span class="highlight">sent to admin</span>.</p>
+
+      <p><strong>Important:</strong></p>
+      <ul>
+        <li>Your withdrawal amount RM{{amount}}.00 has been <strong>debited</strong> from your wallet.</li>
+        <li>After admin approval, the amount will be credited to your bank account.</li>
+        <li>If the request is declined by the admin, the amount will be <strong>refunded</strong> back to your wallet.</li>
+      </ul>
+
+      <p>Thank you for using Mobilab2U!</p>
+
+      <p>Warm regards,<br/>
+      Team Mobilab2U</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © {{currentYear}} Mobilab2U. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

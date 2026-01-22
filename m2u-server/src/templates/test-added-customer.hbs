@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Purchase Confirmation</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 20px auto; background: #ffffff; border-radius: 10px; overflow:
+      hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 20px; }
+      .header { background-color: #2563eb; color: white; text-align: center;
+      padding: 20px; } .header h1 { margin: 0; font-size: 22px; } .content {
+      padding: 20px; font-size: 15px; line-height: 1.6; color: #374151; }
+      .highlight { background-color: #f1f5f9; padding: 12px; border-radius: 6px;
+      margin: 15px 0; } .btn { display: inline-block; margin-top: 15px;
+      background-color: #16a34a; color: white; padding: 12px 20px;
+      border-radius: 6px; font-weight: bold; text-decoration: none; } .footer {
+      font-size: 13px; color: #6b7280; text-align: center; padding: 20px;
+      border-top: 1px solid #e5e7eb; margin-top: 20px; } .footer a { color:
+      #2563eb; text-decoration: none; }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Purchase Confirmed 🎉</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Hi <b>{{customerName}}</b>,</p>
+
+        <p>
+          Thank you for booking your test with
+          <b>Mobilab2u</b>. Your request has been successfully placed.
+        </p>
+
+        <div class="highlight">
+          <p><b>Test / Package:</b> {{testName}}</p>
+          <p><b>Order ID:</b> {{orderId}}</p>
+          <p><b>Appointment Date:</b> {{date}}</p>
+          <p><b>Appointment Time:</b> {{time}}</p>
+        </div>
+
+        <p>
+          A verified health service provider from the Mobilab2u portal will
+          review and approve your test shortly. Once approved, the sample
+          collection date and time will be confirmed.
+        </p>
+
+        <p>
+          You can track your booking status using the link below:
+        </p>
+
+        <a href="{{link}}" class="btn">View Booking Details</a>
+
+        <p style="margin-top: 20px;">
+          We appreciate your trust in us and look forward to serving you.
+        </p>
+
+        <p>
+          Warm regards,<br />
+          <b>Team Mobilab2u</b>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          Need help? Reach us at
+          <a href="mailto:info@mobilab2u.com">info@mobilab2u.com</a><br />
+          © Mobilab2u. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

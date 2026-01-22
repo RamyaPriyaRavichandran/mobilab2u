@@ -1,0 +1,48 @@
+{
+  "title": "Package Body Schema",
+  "type": "object",
+  "properties": {
+    "labShare": { "type": "number" },
+    "hspShare": { "type": "number" },
+    "customerShare": { "type": "number" },
+    "mobilabShare": { "type": "number" },
+    "description": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["FAMILY", "INDIVIDUAL"]
+    },
+    "members": { "type": "number" },
+    "serviceType": {
+      "type": "string",
+      "enum": ["SERVICE_PROVIDER_KIT_FEES", "TEST", "APPOINTMENT"]
+    },
+    "price": { "type": "number" },
+    "offerPrice": { "type": "number" },
+    "document": { "type": "object" },
+    "image": { "type": "object" }
+  },
+  "required": [
+    "name",
+    "document",
+    "image",
+    "description",
+    "type",
+    "serviceType",
+    "price",
+    "labShare",
+    "hspShare",
+    "customerShare",
+    "mobilabShare"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "FAMILY" } },
+        "required": ["type"]
+      },
+      "then": {
+        "required": ["members"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Report Ready</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 20px auto; background: #ffffff; border-radius: 10px; overflow:
+      hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 20px; }
+      .header { background-color: #9333ea; color: white; text-align: center;
+      padding: 20px; } .header h1 { margin: 0; font-size: 22px; } .content {
+      padding: 20px; font-size: 15px; line-height: 1.6; color: #374151; }
+      .content h2 { font-size: 18px; margin-bottom: 10px; color: #111827; } .btn
+      { display: inline-block; margin: 20px 0; background-color: #2563eb; color:
+      white; padding: 12px 20px; border-radius: 6px; font-weight: bold;
+      text-decoration: none; transition: background 0.3s ease; } .btn:hover {
+      background-color: #1e40af; } .footer { font-size: 13px; color: #6b7280;
+      text-align: center; padding: 20px; border-top: 1px solid #e5e7eb;
+      margin-top: 20px; } .footer a { color: #2563eb; text-decoration: none; }
+      .footer a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Your Test Report is Ready</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Hi <b>{{name}}</b>,</p>
+
+        <p>
+          The wait is over! Your test report is ready and waiting for you in
+          your secure Mobilab2u account.
+        </p>
+        <p>Order ID {{orderId}}</p>
+        <p>
+          <a href="{{reportLink}}" class="btn">Click Here to View Your Report</a>
+        </p>
+
+        <p>
+          We recommend discussing your results with your doctor to understand
+          what they mean for your health. You can book a follow-up consultation
+          through your dashboard.
+        </p>
+
+        <p>We're here if you have any questions!</p>
+
+        <p>Stay healthy, <br />From Team Mobilab2u</p>
+      </div>
+
+      <!-- Footer -->
+
+      <div class="footer">
+        <p>
+          Have questions? Contact our support team at
+          <a href="mailto:info@mobilab2u.com">info@mobilab2u.com</a>
+          or visit our FAQ page. | Mobilab2u
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

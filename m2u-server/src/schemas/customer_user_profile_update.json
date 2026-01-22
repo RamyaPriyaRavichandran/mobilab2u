@@ -1,0 +1,90 @@
+{
+  "title": "Customer Update Profile Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "passportSizePhoto": {
+      "type": "object"
+    },
+    "idProof": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "dateOfBirth": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "string"
+    },
+    "primaryAddress": {
+      "type": "object",
+      "properties": {
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "address": { "type": "string" },
+        "postCode": { "type": "string", "minLength": 5, "maxLength": 5 },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" }
+      },
+      "required": ["city", "state", "address", "postCode"]
+    },
+    "secondaryAddress": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "address": { "type": "string" },
+          "postCode": { "type": "string", "minLength": 5, "maxLength": 5 },
+          "lat": { "type": "number" },
+          "lng": { "type": "number" }
+        }
+      }
+    },
+    "nricNumber": {
+      "type": "string"
+    },
+    "passportNumber": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "PASSPORT_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["passportNumber"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "NRIC_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["nricNumber"],
+        "properties": {
+          "nricNumber": {
+            "type": "string",
+            "pattern": "^[0-9]{12}$"
+          }
+        }
+      }
+    }
+  ],
+  "required": ["name", "phone", "dateOfBirth", "primaryAddress"]
+}

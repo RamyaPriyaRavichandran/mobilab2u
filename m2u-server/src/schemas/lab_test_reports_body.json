@@ -1,0 +1,25 @@
+{
+  "title": "Lab Test Report Body Schema",
+  "type": "object",
+  "properties": {
+    "reportDocOne": {
+      "type": "object"
+    },
+    "reportDocTwo": {
+      "type": "object"
+    },
+    "reportDocThree": {
+      "type": "object"
+    },
+    "reportDocFour": {
+      "type": "object"
+    },
+    "reportDocFive": {
+      "type": "object"
+    },
+    "reportDocSix": {
+      "type": "object"
+    }
+  },
+  "required": ["reportDocOne"]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "City Body Schema",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "number"
+    }
+  },
+  "required": ["label", "value"]
+}

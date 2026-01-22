@@ -1,0 +1,50 @@
+{
+  "title": "Create Customer Test Schema",
+  "type": "object",
+  "properties": {
+    "customerAppointmentDate": {
+      "type": "string"
+    },
+    "customerAppointmentTime": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "age": { "type": "string" },
+          "gender": { "type": "string" }
+        }
+      }
+    },
+    "customerAddress": {
+      "type": "object",
+      "properties": {
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "address": { "type": "string" },
+        "postCode": { "type": "string", "minLength": 5, "maxLength": 5 }
+      },
+      "required": ["city", "state", "address", "postCode"]
+    },
+    "referredDoctor": {
+      "type": "string"
+    },
+    "packageId": {
+      "type": "string"
+    },
+    "addressType": {
+      "type": "string",
+      "enum": ["OLD", "NEW"]
+    }
+  },
+
+  "required": [
+    "customerAppointmentDate",
+    "customerAppointmentTime",
+    "customerAddress",
+    "packageId"
+  ]
+}

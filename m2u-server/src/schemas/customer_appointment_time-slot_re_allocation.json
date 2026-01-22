@@ -1,0 +1,13 @@
+{
+  "title": "Customer Appointment Time Slot Reallocation Schema",
+  "type": "object",
+  "properties": {
+    "slotId": {
+      "type": "string"
+    },
+    "doctorLanguage": {
+      "type": "string"
+    }
+  },
+  "required": ["slotId", "doctorLanguage"]
+}

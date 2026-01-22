@@ -1,0 +1,168 @@
+{
+  "title": "SP Register Schema",
+  "type": "object",
+  "required": [
+    "userName",
+    "email",
+    "phone",
+    "roles",
+    "gender",
+    "emailCode",
+    "address",
+    "postCode",
+    "idProof",
+    "city",
+    "state",
+    "medicalQualification",
+    "password",
+    "mQdocOne",
+    "mQdocTwo",
+    "passportSizePhoto",
+    "myKad",
+    "registerNumber"
+  ],
+  "properties": {
+    "roles": {
+      "type": "string",
+      "enum": ["SERVICE_PROVIDER", "GP_PARTNER"]
+    },
+    "userName": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "idProof": {
+      "type": "string",
+      "enum": ["PASSPORT_NUMBER", "NRIC_NUMBER"]
+    },
+    "eSign": {
+      "type": ["object", "string"]
+    },
+    "gender": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "registerNumber": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "email": {
+      "type": "string"
+    },
+    "medicalQualification": {
+      "type": "string",
+      "enum": ["DOCTOR", "PARADEMIC", "NURSES", "OTHERS"]
+    },
+    "other": {
+      "type": "string"
+    },
+    "nricNumber": {
+      "type": "string"
+    },
+    "passportNumber": {
+      "type": "string"
+    },
+    "postCode": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "address2": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "emailCode": {
+      "type": "string"
+    },
+    "mQdocOne": {
+      "type": "object"
+    },
+    "mQdocTwo": {
+      "type": "object"
+    },
+    "mQdocThree": {
+      "type": ["object", "string"]
+    },
+    "mQdocFour": {
+      "type": ["object", "string"]
+    },
+    "passportSizePhoto": {
+      "type": "object"
+    },
+    "myKad": {
+      "type": "object"
+    },
+    "supportingDocs": {
+      "type": "array"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "PASSPORT_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["passportNumber"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "NRIC_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["nricNumber"],
+        "properties": {
+          "nricNumber": {
+            "type": "string",
+            "pattern": "^[0-9]{12}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "medicalQualification": { "const": "OTHERS" }
+        },
+        "required": ["medicalQualification"]
+      },
+      "then": {
+        "required": ["other"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "roles": { "const": "GP_PARTNER" }
+        },
+        "required": ["roles"]
+      },
+      "then": {
+        "required": ["language", "registerNumber", "eSign"]
+      }
+    }
+  ]
+}

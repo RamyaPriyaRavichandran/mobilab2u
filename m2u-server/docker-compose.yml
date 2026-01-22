@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  reverse-proxy:
+    image: traefik:v3.1@sha256:f4efd119261d623362d4420a35510ebbee6dd75140c8599aae0aa58251139474
+    command:
+      - '--api.insecure=true'
+      - '--providers.docker'
+    ports:
+      - '80:80' # The HTTP port
+      - '8081:8080' # The Web UI (enabled by --api.insecure=true)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+
+  fastify-app:
+    env_file:
+      - ./.env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '9000:9000'
+    # labels:
+    #   - 'traefik.http.routers.fastify-app.rule=Host(`fastify-starter.traefik.me`)'
+    #   - 'traefik.http.services.fastify-app.loadbalancer.server.port=9000'
+    environment:
+      NODE_ENV: production
+    command: npm run start:prod
+    networks:
+      - node-network
+
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - node-network
+
+volumes:
+  mongodbdata:
+
+networks:
+  node-network:
+    driver: bridge

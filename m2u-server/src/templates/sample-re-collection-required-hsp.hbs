@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Re-collection Required</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 20px auto; background: #ffffff; border-radius: 10px; overflow:
+      hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 20px; }
+      .header { background-color: #f59e0b; color: white; text-align: center;
+      padding: 20px; } .header h1 { margin: 0; font-size: 22px; } .content {
+      padding: 20px; font-size: 15px; line-height: 1.6; color: #374151; }
+      .highlight { background-color: #fef3c7; padding: 12px; border-radius: 6px;
+      margin: 15px 0; } .btn { display: inline-block; margin-top: 15px;
+      background-color: #2563eb; color: white; padding: 12px 20px;
+      border-radius: 6px; font-weight: bold; text-decoration: none; } .footer {
+      font-size: 13px; color: #6b7280; text-align: center; padding: 20px;
+      border-top: 1px solid #e5e7eb; margin-top: 20px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-container">
+      <div class="header">
+        <h1>Sample Re-collection Required</h1>
+      </div>
+
+      <div class="content">
+        <p>Hi <b>{{hspName}} Health Service Provider</b>,</p>
+
+        <p>
+          The laboratory has informed us that the collected sample cannot be
+          processed and requires a re-collection.
+        </p>
+
+        <div class="highlight">
+          <p><b>Customer:</b> {{customerName}}</p>
+          <p><b>Order ID:</b> {{orderId}}</p>
+          <p><b>Test / Package:</b> {{testName}}</p>
+          <p><b>Reason:</b> {{labReason}}</p>
+        </div>
+
+        <p>
+          Please contact the admin and arrange a re-collection at the earliest
+          convenience.
+        </p>
+
+        <a href="{{link}}" class="btn">Manage Re-collection</a>
+
+        <p style="margin-top: 20px;">
+          Thank you for your prompt action.
+        </p>
+
+        <p>
+          Regards,<br />
+          <b>Team Mobilab2u</b>
+        </p>
+      </div>
+
+      <div class="footer">
+        <p>This is a system notification. | Mobilab2u</p>
+      </div>
+    </div>
+  </body>
+</html>

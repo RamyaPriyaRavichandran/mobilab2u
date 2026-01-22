@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Request Approved</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; } .email-container { max-width: 600px; margin: 20px
+      auto; background: #ffffff; border-radius: 10px; padding: 20px; box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.05); } .header { background-color: #1d4ed8;
+      color: white; text-align: center; padding: 18px; border-radius: 8px; }
+      .content { margin-top: 20px; font-size: 15px; color: #374151; line-height:
+      1.6; } .footer { text-align: center; color: #6b7280; font-size: 13px;
+      margin-top: 25px; border-top: 1px solid #e5e7eb; padding-top: 15px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h2>Approval Successful</h2>
+      </div>
+
+      <!-- Body -->
+      <div class="content">
+        <p>Dear <b>{{serviceProviderName}}</b> (Health Service Provider),</p>
+
+        <p>
+          You have successfully
+          <b>approved</b>
+          the test request for customer:
+          <b>{{customerName}}</b>.
+        </p>
+
+        <p>
+          Below are the details:
+          <b>Order ID</b>
+          {{orderId}}
+          <br />
+          <b>Test Name:</b>
+          {{testName}}
+          <br />
+          <b>Customer Appointment Date:</b>
+          {{appointmentDate}}
+          <br />
+          <b>Customer Appointment Time:</b>
+          {{appointmentTime}}
+          <br />
+          <p>Approved Date</p>
+          {{approvalDate}}
+        </p>
+
+        <p>Thank you for responding promptly.</p>
+
+        <p>Best regards,<br />Team Mobilab2u</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        For assistance, contact: info@mobilab2u.com
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "title": "Customer Register Schema",
+  "type": "object",
+  "required": [
+    "name",
+    "email",
+    "phone",
+    "gender",
+    "emailCode",
+    "address",
+    "postCode",
+    "city",
+    "state",
+    "password",
+    "otp",
+    "dateOfBirth",
+    "idProof"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "email": {
+      "type": "string"
+    },
+    "nricNumber": {
+      "type": "string"
+    },
+    "passportNumber": {
+      "type": "string"
+    },
+    "idProof": {
+      "type": "string",
+      "enum": ["PASSPORT_NUMBER", "NRIC_NUMBER"]
+    },
+    "postCode": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 5
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "address": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "emailCode": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "boolean"
+    },
+    "dateOfBirth": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "PASSPORT_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["passportNumber"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idProof": { "const": "NRIC_NUMBER" }
+        },
+        "required": ["idProof"]
+      },
+      "then": {
+        "required": ["nricNumber"],
+        "properties": {
+          "nricNumber": {
+            "type": "string",
+            "pattern": "^[0-9]{12}$"
+          }
+        }
+      }
+    }
+  ]
+}

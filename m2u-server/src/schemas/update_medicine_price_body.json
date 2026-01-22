@@ -1,0 +1,19 @@
+{
+  "title": "Update medicine price Schema",
+  "type": "object",
+  "properties": {
+    "medicine": {
+      "type": "array"
+    },
+    "price": {
+      "type": "number"
+    },
+    "deliveryCharge": {
+      "type": "number"
+    },
+    "medicineId": {
+      "type": "string"
+    }
+  },
+  "required": ["medicine", "price", "medicineId"]
+}

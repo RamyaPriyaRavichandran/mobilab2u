@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Request Approved</title>
+    <style>
+      body { margin: 0; padding: 0; background-color: #f9fafb; font-family:
+      Arial, sans-serif; color: #333; } .email-container { max-width: 600px;
+      margin: 20px auto; background: #ffffff; border-radius: 10px; overflow:
+      hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 20px; }
+      .header { background-color: #16a34a; color: white; text-align: center;
+      padding: 20px; } .header h1 { margin: 0; font-size: 22px; } .content {
+      padding: 20px; font-size: 15px; line-height: 1.6; color: #374151; }
+      .content h2 { font-size: 18px; margin-bottom: 10px; color: #111827; }
+      .highlight { font-weight: bold; color: #16a34a; } ul { padding-left: 18px;
+      margin: 12px 0; } ul li { margin-bottom: 8px; } .secure-code { background:
+      #f3f4f6; padding: 10px; border-radius: 6px; font-size: 16px; font-weight:
+      bold; color: #dc2626; display: inline-block; margin-top: 8px; } .footer {
+      font-size: 13px; color: #6b7280; text-align: center; padding: 20px;
+      border-top: 1px solid #e5e7eb; margin-top: 20px; } .footer a { color:
+      #2563eb; text-decoration: none; } .footer a:hover { text-decoration:
+      underline; }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Test Request Approved</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p>Hi <b>{{customerName}}</b>,</p>
+
+        <p>
+          Wonderful news! Your request for the
+          <b>{{testName}}</b>
+          has been approved, and you're one step closer to getting your results.
+        </p>
+
+        <p>Order ID {{orderId}}</p>
+        <h2>What happens next? It's simple!</h2>
+        <ul>
+          <li>
+            Our friendly Health Service Provider (<b
+            >{{serviceProviderName}}</b>) will call you soon to schedule a visit
+            at a time that's perfect for you.
+          </li>
+          <li>
+            When they arrive, they'll ask for a special code to make sure it's
+            really you! It's like a secret handshake for your security:
+            <br />
+            <span class="secure-code">Your Secure Code: {{OTP}}</span>
+          </li>
+        </ul>
+
+        <p>
+          Just show them that code, and you'll be all set. Sit back and relax -
+          we'll be in touch soon!
+        </p>
+
+        <p>All the best, <br />Team Mobilab2u</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          Have questions? Contact our support team at
+          <a href="mailto:info@mobilab2u.com">info@mobilab2u.com</a>
+          or visit our FAQ page. | Mobilab2u
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

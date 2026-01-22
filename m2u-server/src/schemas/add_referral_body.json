@@ -1,0 +1,19 @@
+{
+  "title": "Referral Schema",
+  "type": "object",
+  "properties": {
+    "complaint": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "string"
+    },
+    "investigation": {
+      "type": "string"
+    },
+    "management": {
+      "type": "string"
+    }
+  },
+  "required": ["complaint", "findings", "investigation", "management"]
+}
